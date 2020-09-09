@@ -25,19 +25,19 @@
 - [Блог Максима Шульги с отличными рекомендациями по книгам и статьям](https://www.maxshulga.ru/p/useful-books-review.html)
 - [Блог от Google про тестирование](https://testing.googleblog.com/)
 
-Telegram каналы:
-- https://t.me/js_for_testing
-- https://t.me/selenide_ru (Selenide библиотека)
-- https://t.me/qa_load (Чат перфоманс тестировщиков)
-- https://t.me/qa_ru
-- https://t.me/qa_automation
-- https://t.me/qa_fin
-- https://t.me/heisenbugconf (Чат конференции по тестированию Heisenbug)
-- https://t.me/sqaunderhood
-- https://t.me/allure_ru (Чат Allure репортинг фреймворка)
-- https://t.me/qajuniors
-- https://t.me/serious_tester
-- https://t.me/aerokube (Чат ребят из команды Aerokube, которые делают Selenoid и Moon)
+Telegram-каналы:
+- [@js_for_testing](https://t.me/js_for_testing)
+- [@selenide_ru](https://t.me/selenide_ru) (Selenide библиотека)
+- [@qa_load](https://t.me/qa_load) (Чат перфоманс тестировщиков)
+- [@qa_ru](https://t.me/qa_ru)
+- [@qa_automation](https://t.me/qa_automation)
+- [@qa_fin](https://t.me/qa_fin)
+- [@heisenbugconf](https://t.me/heisenbugconf) (Чат конференции по тестированию Heisenbug)
+- [@sqaunderhood](https://t.me/sqaunderhood)
+- [@allure_ru](https://t.me/allure_ru) (Чат Allure репортинг фреймворка)
+- [@qajuniors](https://t.me/qajuniors)
+- [@serious_tester](https://t.me/serious_tester)
+- [@aerokube](https://t.me/aerokube) (Чат ребят из команды Aerokube, которые делают Selenoid и Moon)
 
 Youtube:
 - [https://www.youtube.com/c/Heisenbugconf/videos](https://www.youtube.com/c/Heisenbugconf/videos) (Отличные видео с конференции Heisenbug)
