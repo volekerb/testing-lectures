@@ -18,7 +18,7 @@
 Полезные ссылки:
 - [Блог Martin Fawler](https://martinfowler.com/testing/)
 - [Блог Максима Шульги с отличными рекомендациями по книгам и статьям](https://www.maxshulga.ru/p/useful-books-review.html)
-- [Блог от Google про тестирование] (https://testing.googleblog.com/)
+- [Блог от Google про тестирование](https://testing.googleblog.com/)
 - 
 
 Telegram каналы:
