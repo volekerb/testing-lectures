@@ -1,37 +1,40 @@
-## Welcome to GitHub Pages
+## Software testing lectures
 
-You can use the [editor on GitHub](https://github.com/volekerb/testing-lectures/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Все видео записи, домашние задания, дополнительные материалы можно найти здесь.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Занятие 1. Основы теории.
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Домашнее чтиво:
+- https://martinfowler.com/articles/practical-test-pyramid.html
+- https://martinfowler.com/bliki/IntegrationTest.html
+- https://martinfowler.com/bliki/TestDouble.html
+- 
 
-```markdown
-Syntax highlighted code block
+Домашнее видео(не то, о котором вы подумали):
+- https://www.youtube.com/watch?v=L2c8awaHIAg (ссылка на его примеры https://github.com/qala-io/test-pyramid)
+- https://www.youtube.com/watch?v=-q_9oPRAxFo (инструменты для тестировщика)
 
-# Header 1
-## Header 2
-### Header 3
+Полезные ссылки:
+- Блог Martin Fawler https://martinfowler.com/testing/
+- Блог Максима Шульги с отличными рекомендациями по книгам и статьям https://www.maxshulga.ru/p/useful-books-review.html
+- https://testing.googleblog.com/ (Блог от Google про тестирование)
+- 
 
-- Bulleted
-- List
+Telegram каналы:
+- https://t.me/js_for_testing
+- https://t.me/selenide_ru (Selenide библиотека)
+- https://t.me/qa_load (Чат перфоманс тестировщиков)
+- https://t.me/qa_ru
+- https://t.me/qa_automation
+- https://t.me/qa_fin
+- https://t.me/heisenbugconf (Чат конференции по тестированию Heisenbug)
+- https://t.me/sqaunderhood
+- https://t.me/allure_ru (Чат Allure репортинг фреймворка)
+- https://t.me/qajuniors
+- https://t.me/serious_tester
+- https://t.me/aerokube (Чат ребят из команды Aerokube, которые делают Selenoid и Moon)
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/volekerb/testing-lectures/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Youtube:
+- https://www.youtube.com/c/Heisenbugconf/videos (Отличные видео с конференции Heisenbug)
+- 
