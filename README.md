@@ -7,7 +7,7 @@
 - [Методологии разработки. Статья. Habrahabr](https://habr.com/ru/company/edison/blog/269789/)
 - [Виды, типы тестирования, техники тест-дизайна. Статья. Habrahabr](https://habr.com/ru/post/279535/)
 - [Лекция 1](ST.Lecture1.pdf)
-- Видео TBD
+- [Видео](https://youtu.be/nU9ByrAT2i0)
 
 ---
 Домашнее чтиво:
