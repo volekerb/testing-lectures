@@ -41,3 +41,51 @@ Telegram-каналы:
 
 Youtube:
 - [https://www.youtube.com/c/Heisenbugconf/videos](https://www.youtube.com/c/Heisenbugconf/videos) (Отличные видео с конференции Heisenbug)
+
+### Занятие 2. Тестирование Frontend.
+
+- [React Jest workshop](https://github.com/kentcdodds/react-jest-workshop)
+- [Modern React testing](https://dev.to/sapegin/modern-react-testing-part-1-best-practices-1o93)
+- [Testing library for React docs](https://testing-library.com/)
+- [Jest test runner framework](https://jestjs.io/)
+- [Playwright node.js library for cross-browser testing](https://github.com/microsoft/playwright)
+- [Тестирование Angular приложений](https://medium.com/fafnur/%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BE%D0%B2-%D0%B2-angular-%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E-jest-%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%B0%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D0%B9-%D0%B0%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BD%D0%BD%D0%BE%D0%B9-%D0%BB%D0%BE%D0%B3%D0%B8%D0%BA%D0%B8-396ba5eca147)
+- [Unit тестирование Angular 5](https://habr.com/ru/post/349380/)
+- [Модульное тестирование Vue.js](https://ru.vuejs.org/v2/cookbook/unit-testing-vue-components.html)
+
+Youtube:
+- [Good video about frontend testing with Jasmine and Karma with samples](https://www.youtube.com/watch?v=zF1hlOxucHE)
+
+Notes: Looks like Angular is dying and that's why Protractor probably won't be used much in a long term.
+So use this video for understanding main principles and how you can handle jasmine, karma and mocking.
+
+---
+Домашнее задание
+
+Main часть:
+- Создать репозиторий на GitHub, в котором создать папку `client`
+- В папке `client` создать приложение на React / Angular / Vue фреймворке на ваш выбор. У кого будет выбран самый редкий фреймворк -- получат дополнительные баллы.
+- Требования к приложению: должно содержать несколько страниц с роутингом, обязательно содержать сервис, который общается с node.js бекендом.
+- Присутствуют unit, component и e2e тесты в минимальном количестве 1шт каждый.
+
+Advanced часть:
+- Приложение содержит авторизацию и не собрано из генераторов вида JHipster.
+- Написаны тесты для проверки авторизации
+- Существует нескольно наборов тестов (несколько suites)
+
+Bonus часть:
+- Вы рассматриваете два любых фреймворка на выбор. Например: Mocha и Jest или Playwright и Cypress.
+- Пишете примеры с каждым из фреймовокров для своего приложения.
+- Короткая статья или заметки в чем именно для вас кажутся основные отличия.
+- Делаете в своем репозитории на GitHub активным GitHub pages и размещаете эту статью там.
+
+Вопросы для проверки знаний:
+- Зачем e2e тесты, если можно писать компонентные тесты? Чем отличается e2e тест от компонентных?
+- Терминология `describe` `it` `xit` мне понятна и я могу объяснить что это
+- Что такое test runner?
+- Тест зависит от запуска другого теста(ждет определенного состояния системы). Что может пойти не так?
+- `beforeTest()`,`afterTest()` зачем это?
+- Какие бывают `assertion frameworks`?
+- Почему рекомендуется писать немного e2e тестов?
+- Сколько проверок должно быть в одном юнит тесте?
+- Как называются тесты, которые то проходят, то не проходят? Почему так бывает и что с ними делать?
