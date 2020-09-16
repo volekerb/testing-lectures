@@ -44,6 +44,7 @@ Youtube:
 
 ### Занятие 2. Тестирование Frontend.
 
+- [Как стартовать приложение на React и разобраться быстро с TypeScript](https://github.com/typescript-cheatsheets/react)
 - [React Jest workshop](https://github.com/kentcdodds/react-jest-workshop)
 - [Modern React testing](https://dev.to/sapegin/modern-react-testing-part-1-best-practices-1o93)
 - [Testing library for React docs](https://testing-library.com/)
