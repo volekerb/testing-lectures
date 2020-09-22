@@ -44,7 +44,12 @@ Youtube:
 
 ### Занятие 2. Тестирование Frontend.
 
+- [Лекция 2] TBD
+- [Пример] TBD
+- [Видео](https://youtu.be/AaPvh2-edaU)
+
 - [Как стартовать приложение на React и разобраться быстро с TypeScript](https://github.com/typescript-cheatsheets/react)
+- [Пошаговая инструкция для тестирования компонент на React c Jest и Enzyme](https://medium.com/devschacht/what-and-how-to-test-with-jest-and-enzyme-full-instruction-on-react-components-testing-d3504f3fbc54)
 - [React Jest workshop](https://github.com/kentcdodds/react-jest-workshop)
 - [Modern React testing](https://dev.to/sapegin/modern-react-testing-part-1-best-practices-1o93)
 - [Testing library for React docs](https://testing-library.com/)
