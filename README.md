@@ -99,7 +99,7 @@ Bonus часть:
 
 ### Занятие 3. Тестирование Frontend: e2e тестирование.
 
-- [Лекция 3] TBD
+- [Лекция 3] https://miro.com/app/board/o9J_kkBAhy8=/
 - [Пример] TBD
 - [Видео](https://youtu.be/jtu5DCmr3TA)
 
