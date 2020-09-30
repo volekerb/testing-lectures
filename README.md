@@ -121,3 +121,24 @@ Advanced часть:
 Bonus часть:
 - Написать e2e тесты, которые делают скриншот тестирование и запись видео. Найти дефекты, которые будут обнаружены с помощью видео или скриншот теста, но при этом найти их с помощью юнит или компонентных тестов не тривиально. 
 - По результатам написать статью в ваш блог(блог на github pages, который вы делали в 1 дз)
+
+### Занятие 4. Тестирование Backend. Введение. 
+
+- [Лекция 4] TBD
+- [Пример](https://spring.io/guides/tutorials/react-and-spring-data-rest/)
+- [Видео] TBD
+
+Ссылки HowToDo(гайды)
+
+- [React + Redux + Spring](https://habr.com/ru/company/alfa/blog/340776/)
+- [Пошагово UI на ReactJS + Backend на Java w/Sptring](https://spring.io/guides/tutorials/react-and-spring-data-rest/)
+- [Chrome DevTools panel](https://developers.google.com/web/tools/chrome-devtools/network)
+- [SoapUI test](https://www.soapui.org/getting-started/soap-test/)
+
+Ссылки для ознакомления
+
+- [Http протокол](https://developer.mozilla.org/ru/docs/Web/HTTP/Overview)
+- [Серия постов про REST API простыми словами](https://habr.com/ru/post/483202/)
+- [Postman and cUrl](https://www.taniarascia.com/making-api-requests-postman-curl/#:~:text=Postman%20is%20an%20API%20testing,to%20do%20the%20same%20tasks.)
+- [Chrome DevTools panel](https://developers.google.com/web/tools/chrome-devtools/network)
+- [Uber:Prototool for testing proto and not only for that](https://github.com/uber/prototool)
