@@ -124,9 +124,9 @@ Bonus часть:
 
 ### Занятие 4. Тестирование Backend. Введение. 
 
-- [Лекция 4] TBD
+- [Лекция 4](ST.Lecture4.pdf)
 - [Пример](https://spring.io/guides/tutorials/react-and-spring-data-rest/)
-- [Видео] TBD
+- [Видео](https://youtu.be/z-Yh0QlJGP4)
 
 Ссылки HowToDo(гайды)
 
