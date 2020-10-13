@@ -142,3 +142,44 @@ Bonus часть:
 - [Postman and cUrl](https://www.taniarascia.com/making-api-requests-postman-curl/#:~:text=Postman%20is%20an%20API%20testing,to%20do%20the%20same%20tasks.)
 - [Chrome DevTools panel](https://developers.google.com/web/tools/chrome-devtools/network)
 - [Uber:Prototool for testing proto and not only for that](https://github.com/uber/prototool)
+
+### Занятие 5. Тестирование Backend. Unit testing. Component testing.
+
+- [Лекция 5]
+- [Пример]
+- [Видео]
+
+Ссылки
+- [Видео Кирилла Толкачева про тестирование с Spring Boot](https://www.youtube.com/watch?v=uc-cfX-5wQA)
+- [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/)
+- [TestContainers](https://www.testcontainers.org/)
+- [Доклад Сергея Егорова про TestContainers](https://www.youtube.com/watch?v=GazYkGBamnE)
+- [Доклад Анатолия Коровина про тестирование микросервис и очередей с TestContainers](https://www.youtube.com/watch?v=UeQfaulJJDo&t=4s)
+- [Spring Testing Guide](https://spring.io/guides/gs/testing-web/)
+- [Доклад от Marc Philipp про JUnit 5](https://www.youtube.com/watch?v=751gMXH-lEE)
+
+---
+Домашнее задание
+Main часть:
+Сделать сервис на Java+Spring+любая DB, который имеет как мин 1 Controller.
+Написать Unit и Component тесты для этого сервиса. Использовать TestContainers для одного теста с DB. Использовать Mockito для мокирования тестов с внешним сервисом.
+Написать документацию(README) какие тесты еще необходимо написать, но вы не успели.
+
+Advanced часть:
+Сделать взаимодействие сервиса и вашего Frontend приложения.
+Сделать тесты на авторизацию.
+Создать отдельные Spring Test Configruation, которые можно переключать с помощью флага при запуске тестов.
+Сделать генерацию тестовой документации через Asci Doctor(Spring Rest Docs).
+
+Bonus часть:
+Придумать функциональность, с которой можно использовать очереди/стримы вида RabbitMQ/Kafka streams. Написать компонентные тесты на эту функциональность(используя TestContainers).
+---
+#java #spring #springboot #springboottest #testcontainers #testng #junit5
+
+Вопросы для проверки знаний:
+- Зачем нужен отдельный Config для тестов?
+- Как можно создать отдельный Suite для запуска разных тестов?
+- Можно ли в тесте создавать образ базы данных и работать с ней(не подымая саму базу данных для теста отдельно в окружении)?
+- Как сделать параметризованный тест с JUnit?
+- Есть ли hamcrest в JUnit 5?
+- Почему JUnit 5 лучше TestNG? (или нет? =)
