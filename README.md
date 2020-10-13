@@ -172,7 +172,9 @@ Advanced часть:
 Сделать генерацию тестовой документации через Asci Doctor(Spring Rest Docs).
 
 Bonus часть:
+
 Придумать функциональность, с которой можно использовать очереди/стримы вида RabbitMQ/Kafka streams. Написать компонентные тесты на эту функциональность(используя TestContainers).
+
 ---
 #java #spring #springboot #springboottest #testcontainers #testng #junit5
 
