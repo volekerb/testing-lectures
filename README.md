@@ -147,7 +147,7 @@ Bonus часть:
 
 - [Лекция 5]
 - [Пример]
-- [Видео]
+- [Видео](https://youtu.be/nSwc_jeeVNw)
 
 Ссылки
 - [Видео Кирилла Толкачева про тестирование с Spring Boot](https://www.youtube.com/watch?v=uc-cfX-5wQA)
