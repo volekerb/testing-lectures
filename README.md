@@ -190,7 +190,7 @@ Bonus часть:
 
 - [Лекция 6]
 - [Пример]
-- [Видео]
+- [Видео](https://youtu.be/nfVba1sglLs)
 
 Ссылки
 - [Видео Илья Климов про CI/CD](https://www.youtube.com/watch?v=CwU-OiS_PEQ)
