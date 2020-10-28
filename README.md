@@ -146,7 +146,7 @@ Bonus часть:
 ### Занятие 5. Тестирование Backend. Unit testing. Component testing.
 
 - [Лекция 5]
-- [Пример]
+- [Пример](lec_5_example)
 - [Видео](https://youtu.be/nSwc_jeeVNw)
 
 Ссылки
