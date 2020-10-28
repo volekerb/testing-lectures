@@ -1,0 +1,17 @@
+theme:workflow:
+  - ".github/**"
+
+theme:build:
+  - "gradle/**"
+  - "build.gradle.kts"
+  - "gradle.properties"
+  - ".gitignore"
+
+theme:core:
+  - "src/main/*"
+
+theme:tests:
+  - "src/test/*"
+
+theme:readme:
+  - "README.md"
