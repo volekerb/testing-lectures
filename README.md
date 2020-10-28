@@ -202,7 +202,8 @@ Bonus часть:
 - [Spring example with CD to Azure](https://github.com/Azure-Samples/java-spring-petclinic)
 - [Repo with GitHub actions step by step](https://github.com/qagid/github-actions)
 - [Jenkins + Docker set up pipeline](https://www.youtube.com/watch?v=J0d-CbJKAwU)
-
+- [React app GitHub actions example](https://dev.to/dyarleniber/setting-up-a-ci-cd-workflow-on-github-actions-for-a-react-app-with-github-pages-and-codecov-4hnp)
+- [React app GitHub actions to AWS example](https://github.com/aws-samples/aws-starter-react-for-github-actions)
 ---
 Домашнее задание
 Main часть:
