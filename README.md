@@ -204,7 +204,7 @@ Bonus часть:
 - [Jenkins + Docker set up pipeline](https://www.youtube.com/watch?v=J0d-CbJKAwU)
 - [React app GitHub actions example](https://dev.to/dyarleniber/setting-up-a-ci-cd-workflow-on-github-actions-for-a-react-app-with-github-pages-and-codecov-4hnp)
 - [React app GitHub actions to AWS example](https://github.com/aws-samples/aws-starter-react-for-github-actions)
-- [Lazydocker to manage docker images and containers](https://github.com/jesseduffield/lazydocker) 
+- [LazyDocker to manage docker images and containers](https://github.com/jesseduffield/lazydocker) 
 
 ---
 Домашнее задание
