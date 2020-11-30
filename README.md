@@ -253,3 +253,27 @@ Bonus часть:
 
 ---
 #reporting #bdd #allure
+
+### Занятие 8. Contract tests. Pact. Spring cloud contract.
+
+- [Лекция 8]
+- [Пример]
+- [Видео](https://youtu.be/QAmlyBdXjeY)
+
+Ссылки
+- [Pact workshop step by step](https://github.com/pact-foundation/pact-workshop-js)
+- [Spring cloud contract examples](https://github.com/spring-cloud-samples/spring-cloud-contract-samples)
+- [Spring cloud doc](https://cloud.spring.io/spring-cloud-contract/reference/html/using.html)
+- [Pact broker](https://docs.pact.io/getting_started/sharing_pacts/)
+- [Protocol buffers](https://developers.google.com/protocol-buffers)
+- 
+
+---
+Домашнее задание
+
+Bonus часть:
+
+Написать Pact-тесты к своему сервису.
+
+---
+#contract-tests #pact #swagger
