@@ -176,7 +176,7 @@ Bonus часть:
 Придумать функциональность, с которой можно использовать очереди/стримы вида RabbitMQ/Kafka streams. Написать компонентные тесты на эту функциональность(используя TestContainers).
 
 ---
-#java #spring #springboot #springboottest #testcontainers #testng #junit5
+{#java #spring #springboot #springboottest #testcontainers #testng #junit5}
 
 Вопросы для проверки знаний:
 - Зачем нужен отдельный Config для тестов?
@@ -221,7 +221,7 @@ Bonus часть:
 Использовать Kubernetes в Azure/Яндекс Облаке для разворачивания среды. 
 
 ---
-#githubActions #cicd #azure #cloud
+{#githubActions #cicd #azure #cloud}
 
 Вопросы для проверки знаний:
 - Что такое CI/CD?
@@ -251,7 +251,7 @@ Bonus часть:
 Использовать Allure reporting для написанных тестов. 
 
 ---
-#reporting #bdd #allure
+{#reporting #bdd #allure}
 
 ### Занятие 8. Contract tests. Pact. Spring cloud contract.
 
@@ -274,7 +274,7 @@ Bonus часть:
 Написать Pact-тесты к своему сервису.
 
 ---
-#contract-tests #pact #swagger
+{#contract-tests #pact #swagger}
 
 ### Занятие 9. A11Y. Instruments.
 
@@ -300,7 +300,8 @@ Bonus часть:
 Протестировать свой веб-сайт на а11y с помощью инструментов от Mozilla и Lighthouse. Пофиксить проблемы. Сделать автоматический тест с axe.
 
 ---
-#a11y
+{#a11y}
+
 
 ### Занятие 10. Selenium. Selenide. Selenoid.
 
@@ -329,4 +330,4 @@ Bonus часть:
 - Написать статью как собрать такой сетап.  
 
 ---
-#selenium #selenide #selenoid #e2e-tests #parallel-run
+{#selenium #selenide #selenoid #e2e-tests #parallel-run}
