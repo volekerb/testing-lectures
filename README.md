@@ -242,7 +242,6 @@ Bonus часть:
 - [Allure examples](https://github.com/allure-examples)
 - [BDD.Gherkin syntax](https://cucumber.io/docs/gherkin/)
 - [Akita BDD framework used in Alpha-lab](https://github.com/alfa-laboratory/akita)
-- 
 
 ---
 Домашнее задание
@@ -266,7 +265,6 @@ Bonus часть:
 - [Spring cloud doc](https://cloud.spring.io/spring-cloud-contract/reference/html/using.html)
 - [Pact broker](https://docs.pact.io/getting_started/sharing_pacts/)
 - [Protocol buffers](https://developers.google.com/protocol-buffers)
-- 
 
 ---
 Домашнее задание
@@ -278,23 +276,57 @@ Bonus часть:
 ---
 #contract-tests #pact #swagger
 
-
 ### Занятие 9. A11Y. Instruments.
 
-- [Лекция 9]
+- [Лекция 9](ST.Lecture9.pdf)
 - [Пример]
 - [Видео](https://youtu.be/lzeWAL6rE_o)
 
 Ссылки
 
-- 
+- [Rus | Пошаговое руководство для тестировщиков по проверке доступности сайта](https://adequatica.medium.com/accessibility-testing-d10e9f613c4d)
+- [WCAG doc](https://www.w3.org/WAI/WCAG21/Understanding/)
+- [Rus | Веблайнд. Рекомендации](https://weblind.ru/inner.html#image-content)
+- [Examples of accessibility patterns](https://www.accessibility-developer-guide.com/examples/)
+- [Chrome Dev-tools how-to](https://www.smashingmagazine.com/2020/08/accessibility-chrome-devtools/)
+- [Accessibility dev guide](https://www.accessibility-developer-guide.com/)
+- [Udacity course about accessibility](https://www.udacity.com/course/web-accessibility--ud891)
 
 ---
 Домашнее задание
 
 Bonus часть:
 
-Протестировать свой веб-сайт на а11y с помощью инструментов от Mozilla и Lighouse. Пофиксить проблемы. Сделать автоматический тест с axe.
+Протестировать свой веб-сайт на а11y с помощью инструментов от Mozilla и Lighthouse. Пофиксить проблемы. Сделать автоматический тест с axe.
 
 ---
 #a11y
+
+### Занятие 10. Selenium. Selenide. Selenoid.
+
+- [Лекция 10](ST.Lecture10.pdf)
+- [Пример](https://github.com/selenide-examples)
+- [Видео](https://youtu.be/G3HHvP_bUas)
+
+Ссылки
+- [Selenide + Selenoid configuration](https://habr.com/ru/post/473454/)
+- [Selenium WebDriver step-by-step. PageObject](https://habr.com/ru/post/502292/)
+- [Selenium Grid story](https://habr.com/ru/company/avito/blog/352208/)
+- [Selenoid how-to install](https://medium.com/@eugenetruuts/how-to-install-selenoid-on-macos-751ee2955c70)
+
+---
+Домашнее задание
+
+Main часть:
+- Написать e2e тесты, используя Selenide.
+
+Advanced часть:
+- Настроить запуск тестов с Selenoid.
+
+Bonus часть:
+- Настроить генерацию отчетов с Allure report, сделав полный сетап в GitHub: e2e тесты с selenide запускаются с 
+использованием Selenoid на разных окружениях(браузерах) параллельно и собирают отчет с помощью Allure Report.
+- Написать статью как собрать такой сетап.  
+
+---
+#selenium #selenide #selenoid #e2e-tests #parallel-run
