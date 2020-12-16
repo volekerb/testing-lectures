@@ -333,9 +333,9 @@ Bonus часть:
 {#selenium #selenide #selenoid #e2e-tests #parallel-run}
 
 
-### Занятие 10. Performance testing.
+### Занятие 11. Performance testing.
 
-- [Лекция 10](ST.Lecture11.pdf)
+- [Лекция 11](ST.Lecture11.pdf)
 - [Пример](https://gitlab.com/tinkoffperfworkshop)
 - [Видео](https://youtu.be/SEFqaGvcK-0)
 
