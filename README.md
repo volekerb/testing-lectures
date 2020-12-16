@@ -331,3 +331,35 @@ Bonus часть:
 
 ---
 {#selenium #selenide #selenoid #e2e-tests #parallel-run}
+
+
+### Занятие 10. Performance testing.
+
+- [Лекция 10](ST.Lecture11.pdf)
+- [Пример](https://gitlab.com/tinkoffperfworkshop)
+- [Видео](https://youtu.be/SEFqaGvcK-0)
+
+Ссылки
+- [Анализ ключевых показателей производительности](https://habr.com/ru/company/microsoft/blog/271547/)
+- [ISTQB термины](https://www.rstqb.org/ru/istqb-downloads.html?file=files/content/rstqb/downloads/ISTQB%20Downloads/ISTQB_CTFL_PT_Syllabus_2018_Russian.pdf)
+- [9 этапов тестирования](https://www.a1qa.ru/blog/9-etapov-testirovaniya-proizvoditelnosti/)
+- [Доклад Андрея Акиньшина](https://www.youtube.com/watch?v=jZ0quqA1Fn8)
+- [Доклад Владимира Ситникова про подвоные камни в нагрузочном тестировании](https://www.youtube.com/watch?v=3PWBBc7rZxw)
+- [Доклад Алексея Лавренюка про Pandora](https://www.youtube.com/watch?v=lkusMkIniq0)
+
+---
+Домашнее задание
+
+Main часть:
+- Пройти воркшоп и выложить результат в гитхаб репозиторий.
+
+Advanced часть:
+- Настроить CI с Github actions.
+
+Bonus часть:
+- Настроить генерацию отчетов с Allure report.
+
+Notes: отдельное спасибо Сергею Чепкасову и Максиму Рогожникову за отличный воркшоп.
+
+---
+{#performance #load #gatling #jmeter}
