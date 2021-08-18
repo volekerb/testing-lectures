@@ -11,7 +11,7 @@ Twitter: https://twitter.com/brekelov
 ### Занятие 1. Основы теории.
 
 - [Методологии разработки. Статья. Habrahabr](https://habr.com/ru/company/edison/blog/269789/)
-- [Виды, типы тестирования, техники тест-дизайна. Статья. Habrahabr](https://habr.com/ru/post/279535/)
+- [Виды, типы тестирования, техники тест-дизайна. Статья.](https://dou.ua/forums/topic/13389/)
 - [Лекция 1](ST.Lecture1.pdf)
 - [Видео](https://youtu.be/nU9ByrAT2i0)
 
