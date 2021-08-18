@@ -21,7 +21,7 @@ Twitter: https://twitter.com/brekelov
 - [https://martinfowler.com/bliki/IntegrationTest.html](https://martinfowler.com/bliki/IntegrationTest.html)
 - [https://martinfowler.com/bliki/TestDouble.html](https://martinfowler.com/bliki/TestDouble.html)
 
-Домашнее видео(не то, о котором вы подумали):
+Домашнее видео (не то, о котором вы подумали):
 - [https://www.youtube.com/watch?v=L2c8awaHIAg](https://www.youtube.com/watch?v=L2c8awaHIAg) (ссылка на его примеры https://github.com/qala-io/test-pyramid)
 - [https://www.youtube.com/watch?v=-q_9oPRAxFo](https://www.youtube.com/watch?v=-q_9oPRAxFo) (инструменты для тестировщика)
 
