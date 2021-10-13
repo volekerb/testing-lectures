@@ -96,3 +96,24 @@ Bonus часть:
 - Почему рекомендуется писать немного e2e тестов?
 - Сколько проверок должно быть в одном юнит тесте?
 - Как называются тесты, которые то проходят, то не проходят? Почему так бывает и что с ними делать?
+
+### Занятие 3. Тестирование Backend. Введение. 
+
+- [Лекция 4]
+- [Пример](https://spring.io/guides/tutorials/react-and-spring-data-rest/)
+- [Видео](https://youtu.be/jE2VzZARoPA)
+
+Ссылки HowToDo(гайды)
+
+- [React + Redux + Spring](https://habr.com/ru/company/alfa/blog/340776/)
+- [Пошагово UI на ReactJS + Backend на Java w/Sptring](https://spring.io/guides/tutorials/react-and-spring-data-rest/)
+- [Chrome DevTools panel](https://developers.google.com/web/tools/chrome-devtools/network)
+- [SoapUI test](https://www.soapui.org/getting-started/soap-test/)
+
+Ссылки для ознакомления
+
+- [Http протокол](https://developer.mozilla.org/ru/docs/Web/HTTP/Overview)
+- [Серия постов про REST API простыми словами](https://habr.com/ru/post/483202/)
+- [Postman and cUrl](https://www.taniarascia.com/making-api-requests-postman-curl/#:~:text=Postman%20is%20an%20API%20testing,to%20do%20the%20same%20tasks.)
+- [Chrome DevTools panel](https://developers.google.com/web/tools/chrome-devtools/network)
+- [Uber:Prototool for testing proto and not only for that](https://github.com/uber/prototool)
