@@ -46,7 +46,8 @@ Youtube:
 ### Занятие 2. Тестирование Frontend. Часть 1.
 
 - [Лекция 2] TBD
-- [Пример] TBD
+- [Пример 1](https://github.com/Mervap/SoftwareTesting) Приложение с фронтендом, тестами и бекендом.
+- [Пример 2](https://github.com/PolinB/software-testing)
 - [Видео](https://youtu.be/xDiSgXWff8Y)
 
 - [Как стартовать приложение на React и разобраться быстро с TypeScript](https://github.com/typescript-cheatsheets/react)
