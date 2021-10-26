@@ -164,3 +164,47 @@ Bonus часть:
 - Как сделать параметризованный тест с JUnit?
 - Есть ли hamcrest в JUnit 5?
 - Почему JUnit 5 лучше TestNG? (или нет? =)
+
+### Занятие 5. CI/CD. GitHub actions.
+
+- [Лекция 5]
+- [Пример]
+- [Видео]()
+
+Ссылки
+- [Видео Илья Климов про CI/CD](https://www.youtube.com/watch?v=CwU-OiS_PEQ)
+- [Что такое CI/CD](https://selectel.ru/blog/what-is-ci-cd/)
+- [GitHub Actions](https://github.com/features/actions)
+- [Azure GitHub action](https://github.com/Azure/actions)
+- [Spring Boot app to Azure](https://spring.io/guides/gs/spring-boot-for-azure/)
+- [CI/CD с GitHub actions статья](https://habr.com/ru/post/476368/)
+- [Spring example with CD to Azure](https://github.com/Azure-Samples/java-spring-petclinic)
+- [Repo with GitHub actions step by step](https://github.com/qagid/github-actions)
+- [Jenkins + Docker set up pipeline](https://www.youtube.com/watch?v=J0d-CbJKAwU)
+- [React app GitHub actions example](https://dev.to/dyarleniber/setting-up-a-ci-cd-workflow-on-github-actions-for-a-react-app-with-github-pages-and-codecov-4hnp)
+- [React app GitHub actions to AWS example](https://github.com/aws-samples/aws-starter-react-for-github-actions)
+- [LazyDocker to manage docker images and containers](https://github.com/jesseduffield/lazydocker) 
+
+---
+Домашнее задание
+Main часть:
+
+Добавить GitHub action для запуска тестов на UI и Backend по пушу из в master ветку.
+
+Advanced часть:
+
+Добавить GitHub action для деплоя приложения UI+BE на Azure/Vercel/Яндекс Облако.
+
+Bonus часть:
+
+Использовать Kubernetes в Azure/Яндекс Облаке для разворачивания среды. 
+
+---
+{#githubActions #cicd #azure #cloud}
+
+Вопросы для проверки знаний:
+- Что такое CI/CD?
+- Можно ли без Docker задеплоить приложение?
+- Какие основные шаги прописываются в CI пайплайне для UI/BE?
+- Можно ли настроить деплоймент на одно и тоже окружение из разных веток?
+- Зачем нужно деплоить по комиту/пушу в мастер?
