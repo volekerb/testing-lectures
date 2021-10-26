@@ -170,7 +170,7 @@ Bonus часть:
 
 - [Лекция 5]
 - [Пример]
-- [Видео]()
+- [Видео](https://youtu.be/PHJOMKU5hqc)
 
 Ссылки
 - [Видео Илья Климов про CI/CD](https://www.youtube.com/watch?v=CwU-OiS_PEQ)
