@@ -102,6 +102,7 @@ Bonus часть:
 
 - [Лекция 3](ST.Lecture3.pdf)
 - [Пример](https://spring.io/guides/tutorials/react-and-spring-data-rest/)
+- [Kotlin + ReactJS example](https://github.com/oktadev/okta-kotlin-react-crud-example)
 - [Видео](https://youtu.be/jE2VzZARoPA)
 
 Ссылки HowToDo(гайды)
