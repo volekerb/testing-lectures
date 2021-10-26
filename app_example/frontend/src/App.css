@@ -1,0 +1,43 @@
+
+.App {
+  min-height: 100vh;
+  text-align: center;
+}
+.App-header {
+  height: 10vh;
+  display: flex;
+  background-color: #282c34;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.App-body {
+  width: 60%;
+  margin: 20px auto;
+}
+ul {
+  padding: 0;
+  display: flex;
+  list-style-type: decimal;
+  flex-direction: column;
+}
+li {
+  font-size: large;
+  text-align: left;
+  padding: 0.5rem 0;
+}
+li a {
+  text-transform: capitalize;
+  text-decoration: none;
+}
+.todo-title {
+  text-transform: capitalize;
+}
+.completed {
+  color: green;
+}
+.not-completed {
+  color: red;
+}

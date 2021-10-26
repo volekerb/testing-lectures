@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  frontend:
+    image: frontend:1.0
+    ports:
+      - "80:80"
+    networks:
+      - olo
+
+networks:
+  olo:
+    driver: bridge
