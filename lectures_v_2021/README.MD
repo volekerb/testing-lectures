@@ -209,3 +209,26 @@ Bonus часть:
 - Какие основные шаги прописываются в CI пайплайне для UI/BE?
 - Можно ли настроить деплоймент на одно и тоже окружение из разных веток?
 - Зачем нужно деплоить по комиту/пушу в мастер?
+
+## Занятие 6. Reporting. BDD.
+
+- [Лекция 7](ST.Lecture6.pdf)
+- [Пример](https://github.com/allure-examples)
+- [Видео](https://youtu.be/FkbMTEdSUxI)
+
+Ссылки
+- [Allure reporting](http://allure.qatools.ru/)
+- [Allure doc](https://docs.qameta.io/allure/)
+- [Allure examples](https://github.com/allure-examples)
+- [BDD.Gherkin syntax](https://cucumber.io/docs/gherkin/)
+- [Akita BDD framework used in Alpha-lab](https://github.com/alfa-laboratory/akita)
+
+---
+Домашнее задание
+
+Bonus часть:
+
+Использовать Allure reporting для написанных тестов.
+
+---
+{#reporting #bdd #allure}
