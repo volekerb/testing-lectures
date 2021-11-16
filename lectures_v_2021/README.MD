@@ -232,3 +232,52 @@ Bonus часть:
 
 ---
 {#reporting #bdd #allure}
+
+### Занятие 7. Contract tests. Pact. Spring cloud contract.
+
+- [Лекция 7]
+- [Пример]
+- [Видео](https://youtu.be/QAmlyBdXjeY)
+
+Ссылки
+- [Pact workshop step by step](https://github.com/pact-foundation/pact-workshop-js)
+- [Spring cloud contract examples](https://github.com/spring-cloud-samples/spring-cloud-contract-samples)
+- [Spring cloud doc](https://cloud.spring.io/spring-cloud-contract/reference/html/using.html)
+- [Pact broker](https://docs.pact.io/getting_started/sharing_pacts/)
+- [Protocol buffers](https://developers.google.com/protocol-buffers)
+
+---
+Домашнее задание
+
+Bonus часть:
+
+Написать Pact-тесты к своему сервису.
+
+---
+{#contract-tests #pact #swagger}
+
+### Занятие 8. A11Y. Instruments.
+
+- [Лекция 8](ST.Lecture8.pdf)
+- [Пример]
+- [Видео](https://youtu.be/lzeWAL6rE_o)
+
+Ссылки
+
+- [Rus | Пошаговое руководство для тестировщиков по проверке доступности сайта](https://adequatica.medium.com/accessibility-testing-d10e9f613c4d)
+- [WCAG doc](https://www.w3.org/WAI/WCAG21/Understanding/)
+- [Rus | Веблайнд. Рекомендации](https://weblind.ru/inner.html#image-content)
+- [Examples of accessibility patterns](https://www.accessibility-developer-guide.com/examples/)
+- [Chrome Dev-tools how-to](https://www.smashingmagazine.com/2020/08/accessibility-chrome-devtools/)
+- [Accessibility dev guide](https://www.accessibility-developer-guide.com/)
+- [Udacity course about accessibility](https://www.udacity.com/course/web-accessibility--ud891)
+
+---
+Домашнее задание
+
+Bonus часть:
+
+Протестировать свой веб-сайт на а11y с помощью инструментов от Mozilla и Lighthouse. Пофиксить проблемы. Сделать автоматический тест с axe.
+
+---
+{#a11y}
