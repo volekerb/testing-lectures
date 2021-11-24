@@ -285,7 +285,7 @@ Bonus часть:
 
 ### Занятие 9. Selenium. Selenide. Selenoid.
 
-- [Лекция 10](ST.Lecture10.pdf)
+- [Лекция 9](ST.Lecture9.pdf)
 - [Пример](https://github.com/selenide-examples)
 - [Видео](https://youtu.be/UnZMRrHJQnw)
 
