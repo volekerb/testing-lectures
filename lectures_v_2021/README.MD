@@ -281,3 +281,34 @@ Bonus часть:
 
 ---
 {#a11y}
+
+
+### Занятие 9. Selenium. Selenide. Selenoid.
+
+- [Лекция 10](ST.Lecture10.pdf)
+- [Пример](https://github.com/selenide-examples)
+- [Видео](https://youtu.be/UnZMRrHJQnw)
+
+Ссылки
+- [Selenide + Selenoid configuration](https://habr.com/ru/post/473454/)
+- [Selenium WebDriver step-by-step. PageObject](https://habr.com/ru/post/502292/)
+- [Selenium Grid story](https://habr.com/ru/company/avito/blog/352208/)
+- [Selenoid how-to install](https://medium.com/@eugenetruuts/how-to-install-selenoid-on-macos-751ee2955c70)
+
+---
+Домашнее задание
+
+Main часть:
+- Написать e2e тесты, используя Selenide.
+
+Advanced часть:
+- Настроить запуск тестов с Selenoid.
+
+Bonus часть:
+- Настроить генерацию отчетов с Allure report, сделав полный сетап в GitHub: e2e тесты с selenide запускаются с
+  использованием Selenoid на разных окружениях(браузерах) параллельно и собирают отчет с помощью Allure Report.
+- Написать статью как собрать такой сетап.
+
+---
+{#selenium #selenide #selenoid #e2e-tests #parallel-run}
+
