@@ -343,3 +343,22 @@ Notes: отдельное спасибо Сергею Чепкасову и Ма
 ---
 {#performance #load #gatling #jmeter}
 
+### Занятие 11. Data Quality.
+
+- [Лекция 11]()
+- [Пример]()
+- [Видео](https://youtu.be/k1zRUOooD38)
+
+Ссылки
+- [Great Expectations](https://github.com/great-expectations/great_expectations)
+- [Data quality at Uber](https://eng.uber.com/operational-excellence-data-quality/)
+- [Automating Large-Scale Data Quality Verification](https://www.vldb.org/pvldb/vol11/p1781-schelter.pdf)
+- [Full predicate coverage for testing SQL database queries](http://giis.uniovi.es/testing/papers/stvr-2010-sqlfpc.pdf)
+- [Software Testing Research - Publications](http://giis.uniovi.es/testing/#stvr10sqlfpc)
+- [Data mesh](https://francois-nguyen.blog/2021/03/07/towards-a-data-mesh-part-1-data-domains-and-teams-topologies/)
+- [Structural Coverage Criteria for Testing SQL Queries](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.216.1676&rep=rep1&type=pdf)
+- [Monitoring](https://databricks.com/blog/2020/03/04/how-to-monitor-data-stream-quality-using-spark-streaming-and-delta-lake.html)
+
+---
+{#dataquality #data #greatexpectations #sql}
+
