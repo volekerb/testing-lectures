@@ -362,3 +362,8 @@ Notes: отдельное спасибо Сергею Чепкасову и Ма
 ---
 {#dataquality #data #greatexpectations #sql}
 
+
+### Занятие 12. Best practices. Итоговая лекция.
+
+- [Лекция 11](ST.Lecture12.pdf)
+- [Видео](https://youtu.be/p-u6XWF_1AM)
