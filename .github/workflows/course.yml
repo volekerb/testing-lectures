@@ -74,9 +74,6 @@ jobs:
     permissions:
       contents: write
       pages: write
-    environment:
-      name: github-pages
-      url: https://brekelov.com/testing-lectures/
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
