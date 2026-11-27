@@ -1,0 +1,7 @@
+{
+  "base": "/testing-lectures/",
+  "locales": [
+    "en",
+    "ru"
+  ]
+}
