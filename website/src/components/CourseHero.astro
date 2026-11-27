@@ -1,0 +1,5 @@
+---
+import Home from './Home.astro';
+const lang = Astro.locals.starlightRoute.locale || 'en';
+---
+<Home lang={lang} />

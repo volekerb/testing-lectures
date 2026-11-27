@@ -1,0 +1,131 @@
+@import '@fontsource/ibm-plex-sans/latin-400.css';
+@import '@fontsource/ibm-plex-sans/latin-500.css';
+@import '@fontsource/ibm-plex-sans/latin-600.css';
+@import '@fontsource/ibm-plex-sans/cyrillic-400.css';
+@import '@fontsource/ibm-plex-sans/cyrillic-500.css';
+@import '@fontsource/ibm-plex-sans/cyrillic-600.css';
+@import '@fontsource/ibm-plex-mono/latin-400.css';
+@import '@fontsource/ibm-plex-mono/cyrillic-400.css';
+
+:root {
+  --sl-font: 'IBM Plex Sans', sans-serif;
+  --sl-font-mono: 'IBM Plex Mono', monospace;
+  --sl-color-accent-low: #143b35;
+  --sl-color-accent: #48b69f;
+  --sl-color-accent-high: #a8e7d8;
+  --course-surface: #1e2928;
+  --course-line: #465654;
+  --course-ink: #edf3f0;
+  --course-muted: #b5c5be;
+  --course-accent: #a8e7d8;
+  --course-button: #a8e7d8;
+  --course-button-text: #113b32;
+  --sl-color-bg: #131e1d;
+  --sl-color-bg-nav: #131e1d;
+  --sl-color-bg-sidebar: #172321;
+  --sl-content-width: 48rem;
+}
+:root[data-theme='light'] {
+  --sl-color-accent-low: #e0efea;
+  --sl-color-accent: #176859;
+  --sl-color-accent-high: #164c41;
+  --sl-color-bg: #fcfbf7;
+  --sl-color-bg-nav: #fcfbf7;
+  --sl-color-bg-sidebar: #f5f4ee;
+  --course-surface: #f1f3ec;
+  --course-line: #c3ccc3;
+  --course-ink: #20352d;
+  --course-muted: #54645b;
+  --course-accent: #176859;
+  --course-button: #176859;
+  --course-button-text: #fff;
+}
+html { scroll-behavior: smooth; }
+body { font-feature-settings: 'ss01'; }
+h1, h2, h3 { letter-spacing: -.025em; }
+.sl-markdown-content :is(p, li) { line-height: 1.75; }
+.sl-markdown-content h2 { margin-top: 2.5rem; }
+.site-title { font-weight: 600; letter-spacing: -.035em; }
+button, input, select { font: inherit; }
+button, a, input, select { touch-action: manipulation; }
+:focus-visible { outline: 3px solid var(--course-accent); outline-offset: 4px; }
+.course-home { color: var(--course-ink); }
+.course-home a { color: var(--course-accent); }
+.mobile-language { display: none; }
+@media (max-width: 49.99rem) {
+  .mobile-language { display: inline-block; font-size: .95rem; padding: .35rem 0; text-underline-offset: .2em; }
+}
+[data-has-hero] .content-panel { border: 0; }
+[data-has-hero] .sl-container { max-width: 78rem; }
+.course-intro { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 5.5rem); align-items: start; padding: 2rem 0 4rem; }
+.course-intro h1 { font-size: clamp(2.8rem, 4.3vw, 4.3rem); line-height: 1.08; max-width: 16ch; font-weight: 500; margin: 1.2rem 0 1.5rem; }
+html[lang='ru'] .course-intro h1 { max-width: 14ch; font-size: clamp(2.65rem, 4.2vw, 4.2rem); }
+.course-kicker { font-size: .92rem; color: var(--course-accent); font-weight: 600; }
+.intro-lead { font-size: 1.2rem; max-width: 39ch; color: var(--course-muted); }
+.intro-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1.4rem; margin: 2rem 0; }
+.course-button, .check-button { background: var(--course-button); color: var(--course-button-text) !important; padding: .8rem 1.1rem; text-decoration: none; border: 1px solid transparent; border-radius: .25rem; font-weight: 500; white-space: nowrap; cursor: pointer; }
+.course-button { display: inline-flex; align-items: center; gap: 1.25rem; }
+.course-button:hover, .check-button:hover { filter: brightness(1.08); }
+.text-link { text-underline-offset: .25em; }
+.lesson-facts { display: flex; flex-wrap: wrap; gap: 1.8rem; margin-top: 2.6rem; }
+.lesson-facts dt { color: var(--course-muted); font-size: .85rem; }
+.lesson-facts dd { margin: .25rem 0 0; font-size: .95rem; font-weight: 500; }
+seat-explorer { display: block; background: var(--course-surface); border: 1px solid var(--course-line); border-radius: .5rem; padding: clamp(1.25rem, 3vw, 2rem); }
+.sl-markdown-content seat-explorer { margin: 2rem 0; }
+.exercise-tag { color: var(--course-accent); font-size: .82rem; font-weight: 600; }
+.explorer-heading h2 { font-size: 1.55rem; line-height: 1.2; margin: .6rem 0 !important; }
+.explorer-heading p { font-size: .98rem; color: var(--course-muted); margin: 0; }
+.seat-display { display: grid; grid-template-columns: repeat(5, 1fr); gap: .55rem; margin-top: 1.5rem; }
+.seat { display: grid; place-items: center; aspect-ratio: 1.5; border: 1px dashed var(--course-line); border-radius: .25rem .25rem .6rem .6rem; color: var(--course-muted); font: .8rem var(--sl-font-mono); transition: background-color 180ms ease, color 180ms ease; }
+.seat.occupied { background: var(--course-accent); color: var(--sl-color-bg); border-style: solid; border-color: var(--course-accent); }
+.capacity-caption { color: var(--course-muted); font-size: .8rem; margin: .6rem 0 1.25rem; }
+seat-explorer form { display: grid; grid-template-columns: 1fr auto; gap: .8rem; align-items: end; }
+seat-explorer :is(form, .presets, .seat-display, .explorer-heading) > * { margin-top: 0; }
+seat-explorer label { display: grid; gap: .35rem; font-size: .88rem; font-weight: 500; }
+seat-explorer input, seat-explorer select { background: var(--sl-color-bg); color: var(--course-ink); border: 1px solid var(--course-line); border-radius: .2rem; padding: .6rem; min-height: 44px; width: 100%; min-width: 0; }
+.presets { display: flex; gap: .35rem; }
+.presets button { background: transparent; color: var(--course-accent); border: 1px solid var(--course-line); min-height: 44px; min-width: 44px; border-radius: .2rem; cursor: pointer; }
+.presets button:hover { background: var(--sl-color-bg); }
+.prediction-label, .check-button { grid-column: 1 / -1; }
+.explorer-hint { font-size: .85rem; color: var(--course-muted); margin: .9rem 0 0 !important; }
+.explorer-result:empty { display: none; }
+.explorer-result { margin-top: 1rem; border-left: 3px solid var(--course-accent); padding-left: 1rem; }
+.explorer-result p { font-size: .9rem; margin: .4rem 0; }
+.explorer-result .comparison { font-weight: 600; }
+.learning-path { padding: 1.6rem 0 3rem; border-top: 1px solid var(--course-line); }
+.learning-path > h2 { font-size: clamp(1.7rem, 3vw, 2.5rem); font-weight: 500; margin: 0 0 2rem; }
+.path-rows { display: grid; }
+.path-rows > a { display: grid; grid-template-columns: 3rem 1fr 1.5rem; align-items: center; gap: 1rem; padding: 1.2rem .5rem; border-bottom: 1px solid var(--course-line); color: inherit; text-decoration: none; }
+.path-rows > a:hover { background: var(--course-surface); }
+.path-number { font-family: var(--sl-font-mono); color: var(--course-accent); }
+.path-rows h3 { font-size: 1.2rem; margin: 0 0 .3rem; }
+.path-rows p { color: var(--course-muted); margin: 0; }
+.course-note { max-width: 47rem; padding-bottom: 2rem; }
+.course-note h2 { font-weight: 500; }
+.lesson-actions { display: flex; flex-wrap: wrap; gap: .8rem 1.5rem; margin: 1.25rem 0 2rem; align-items: center; }
+.lesson-meta { color: var(--course-muted); font-size: .95rem; }
+.callout-rule { padding: 1.2rem 1.4rem; background: var(--course-surface); border-left: 4px solid var(--course-accent); margin: 1.5rem 0; }
+.callout-rule p { margin: 0; }
+.sl-markdown-content details { border: 1px solid var(--course-line); padding: 1rem; border-radius: .25rem; margin: 1rem 0; }
+.sl-markdown-content summary { font-weight: 500; cursor: pointer; }
+@media (max-width: 60rem) {
+  .course-intro { gap: 2rem; grid-template-columns: 1fr; padding-top: .5rem; }
+  .course-intro h1, html[lang='ru'] .course-intro h1 { max-width: 17ch; }
+  .intro-lead { max-width: 55ch; }
+  .course-intro seat-explorer { max-width: 40rem; }
+}
+@media (max-width: 24rem) {
+  seat-explorer form { grid-template-columns: 1fr; }
+  .presets { grid-column: 1; }
+  .path-rows > a { grid-template-columns: 2rem 1fr 1rem; gap: .5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+@media print {
+  header, nav, .sidebar-pane, .right-sidebar-container, .lesson-actions, seat-explorer form { display: none !important; }
+  .main-pane { padding: 0; margin: 0; width: 100%; }
+  :root { --sl-color-bg: white; --course-ink: #20352d; --sl-color-text: #20352d; }
+  pre, .callout-rule, seat-explorer { break-inside: avoid; }
+}
