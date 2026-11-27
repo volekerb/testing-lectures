@@ -1,0 +1,44 @@
+{
+  "name": "testing-lectures",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "scripts": {
+    "dev": "astro dev --root website --host 127.0.0.1",
+    "build": "npm run check:content && astro build --root website && node scripts/build-slides.mjs && node scripts/check-links.mjs",
+    "preview": "node scripts/serve.mjs",
+    "slides:en": "cd slides && slidev foundations.en.md --port 3030",
+    "slides:ru": "cd slides && slidev foundations.ru.md --port 3031",
+    "check:content": "node scripts/check-content.mjs",
+    "test": "node --test tests/lab.test.mjs",
+    "test:e2e": "playwright test",
+    "lab:test": "node --test labs/registration/starter/registration.test.mjs",
+    "lab:check": "node labs/registration/check.mjs",
+    "lab:solution": "node labs/registration/check.mjs --solution",
+    "audit": "node scripts/audit.mjs"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "7.3.10",
+    "@astrojs/starlight": "0.43.2",
+    "@fontsource/ibm-plex-mono": "5.3.0",
+    "@fontsource/ibm-plex-sans": "5.3.0",
+    "@slidev/cli": "53.2.0",
+    "@slidev/theme-default": "0.25.0",
+    "astro": "7.4.13"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.1",
+    "@playwright/test": "1.65.1",
+    "fflate": "0.8.3",
+    "lighthouse": "13.6.0",
+    "chrome-launcher": "1.2.3"
+  },
+  "overrides": {
+    "pptxgenjs": {
+      "image-size": "2.2.0"
+    }
+  }
+}

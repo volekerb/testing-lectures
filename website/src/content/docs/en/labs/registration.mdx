@@ -1,0 +1,77 @@
+---
+title: "Lab: the last seat"
+description: Reproduce a boundary bug, add a failing test, fix it, and explain the limits of your evidence.
+---
+import CourseLink from '../../../../components/CourseLink.astro';
+
+**35 minutes.** Node.js 24, a terminal, and a text editor. No dependency installation or external service is needed. New to JavaScript? Keep the [worked test in the lesson](../../lessons/foundations/#make-the-missing-evidence-executable) open beside your editor.
+
+## Get the starter
+
+<CourseLink class="course-button" to="downloads/registration-lab.zip">Download the lab ↓</CourseLink>
+
+Extract the ZIP and open a terminal in the extracted `registration-lab` directory. It contains `starter/registration.mjs`, two initial tests, a contract checker, and instructions in both languages. The reference solution is available separately in the walkthrough.
+
+If you already cloned the repository, use `cd labs/registration` instead. All commands below run from that directory.
+
+## Agree on the rule
+
+`isRegistrationOpen(registered, capacity)` returns `true` exactly when `registered < capacity`. Both inputs are safe integers, with `registered >= 0` and `capacity >= 1`. Invalid inputs throw `TypeError`. A count already above capacity returns `false`.
+
+Write a small table for 9, 10, and 11 registered people at capacity 10. Record expected results **before** running the checker. The function does not reserve or save a seat.
+
+## Run the existing tests
+
+```sh
+node --version
+node --test starter/registration.test.mjs
+```
+
+The two initial tests pass. Read their names and inputs. Which part of your prediction table has no test?
+
+## Capture a meaningful failure
+
+Edit `starter/registration.test.mjs`. Add a test for an event whose registered count equals its capacity. Use `assert.equal` to compare the returned Boolean with the result required by the rule.
+
+```sh
+node --test starter/registration.test.mjs
+```
+
+Save the failure output. It should show an expected `false` and an actual `true`. If it instead shows a syntax or import error, repair that before continuing. Do not change the expected result just to make the test green.
+
+## Make the smallest fix
+
+Edit `starter/registration.mjs` so the equality case follows the requirement. Keep your test and rerun it, then run the independent contract examples:
+
+```sh
+node --test starter/registration.test.mjs
+node check.mjs
+```
+
+After the fix, your tests and all **six** contract examples should pass. On the untouched starter, `node check.mjs` intentionally fails two equality examples; this is part of the exercise, not a setup failure.
+
+## Hand in evidence
+
+Prepare these five items for your instructor or self-review:
+
+1. The prediction table and the rule used to produce it.
+2. Your new test and its failure output before the fix.
+3. The smallest implementation change and passing output afterwards.
+4. A [reproducible bug report](../../lessons/foundations/#describe-the-defect-so-someone-can-reproduce-it).
+5. Two untested risks, one prioritized next test, and your reason for choosing it.
+
+| Criterion | Points |
+| --- | --- |
+| Correct predictions with a stated oracle | 2 |
+| Boundary test fails for the intended reason | 2 |
+| Minimal fix and passing regression checks | 2 |
+| Reproducible report with possible impact | 2 |
+| Scope limitations and justified next test | 2 |
+
+The site does not collect submissions or store your progress.
+
+## Extend the investigation
+
+Try a capacity of 1. Test invalid inputs, such as a negative count or fractional capacity. Then discuss two concurrent requests: if both read 9 before either writes, what has this pure function test failed to establish?
+
+[Compare with the walkthrough](../solution/) after you have captured your own failure and fix.

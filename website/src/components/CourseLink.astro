@@ -1,0 +1,5 @@
+---
+const { to, class: className } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<a class={className} href={`${base}${to.replace(/^\//, '')}`}><slot /></a>

@@ -1,0 +1,78 @@
+---
+const { lang = 'en' } = Astro.props;
+const ru = lang === 'ru';
+const labels = ru ? {
+  title: 'Десять мест. Ещё один участник?',
+  intro: 'По правилу курса запись открыта, только пока зарегистрированных меньше, чем мест. Проверьте реализацию.',
+  registered: 'Уже зарегистрировано', seats: 'Вместимость: 10 мест',
+  prediction: 'Ваш прогноз по правилу', open: 'Запись открыта', closed: 'Запись закрыта',
+  check: 'Проверить', expected: 'По правилу', actual: 'В реализации',
+  match: 'Совпадает. Один успешный пример ещё не проверяет границу.',
+  mismatch: 'Расхождение! При 10 участниках свободных мест нет, но код разрешает запись.',
+  correct: 'Ваш прогноз верен.', incorrect: 'Сравните свой прогноз с правилом: зарегистрированных должно быть строго меньше 10.',
+  try: 'Сравните 9, 10 и 11. В каком случае появляется дефект?',
+} : {
+  title: 'Ten seats. One more person?',
+  intro: 'Our rule: registration is open only while the registered count is below capacity. Try the implementation.',
+  registered: 'Already registered', seats: 'Capacity: 10 seats',
+  prediction: 'Your prediction from the rule', open: 'Registration open', closed: 'Registration closed',
+  check: 'Check the result', expected: 'From the rule', actual: 'From the code',
+  match: 'They agree. One passing example still leaves the boundary untested.',
+  mismatch: 'A mismatch! At 10 people there are no seats left, but the code allows registration.',
+  correct: 'Your prediction is correct.', incorrect: 'Revisit the rule: the registered count must be strictly below 10.',
+  try: 'Compare 9, 10, and 11. Which case exposes the defect?',
+};
+---
+<seat-explorer data-labels={JSON.stringify(labels)}>
+  <div class="explorer-heading"><span class="exercise-tag">{ru ? 'Попробуйте' : 'Try it yourself'}</span><h2>{labels.title}</h2><p>{labels.intro}</p></div>
+  <div class="seat-display" aria-hidden="true">{Array.from({ length: 10 }, (_, i) => <span class:list={['seat', { occupied: i < 9 }]}>{String(i + 1).padStart(2, '0')}</span>)}</div>
+  <p class="capacity-caption">{labels.seats}</p>
+  <form>
+    <label class="number-label">{labels.registered}<input name="registered" type="number" min="0" max="100" step="1" value="9" required /></label>
+    <div class="presets" aria-label={ru ? 'Граничные значения' : 'Boundary values'}>{[9, 10, 11].map(count => <button type="button" data-count={count}>{count}</button>)}</div>
+    <label class="prediction-label">{labels.prediction}<select name="prediction"><option value="true">{labels.open}</option><option value="false">{labels.closed}</option></select></label>
+    <button type="submit" class="check-button">{labels.check}</button>
+  </form>
+  <div class="explorer-result" role="status" aria-live="polite" aria-atomic="true"></div>
+  <p class="explorer-hint">{labels.try}</p>
+</seat-explorer>
+<script>
+  import { isRegistrationOpen } from '../../../labs/registration/starter/registration.mjs';
+  class SeatExplorer extends HTMLElement {
+    connectedCallback() {
+      if (this.dataset.ready) return;
+      this.dataset.ready = 'true';
+      const labels = JSON.parse(this.dataset.labels!);
+      const form = this.querySelector('form')!;
+      const input = this.querySelector<HTMLInputElement>('input')!;
+      const result = this.querySelector<HTMLElement>('.explorer-result')!;
+      const renderSeats = () => {
+        this.querySelectorAll('.seat').forEach((seat, i) => seat.classList.toggle('occupied', i < Number(input.value)));
+        result.replaceChildren();
+        result.removeAttribute('data-outcome');
+      };
+      input.addEventListener('input', renderSeats);
+      this.querySelectorAll<HTMLButtonElement>('[data-count]').forEach(button => button.addEventListener('click', () => {
+        input.value = button.dataset.count!;
+        renderSeats();
+      }));
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        const count = Number(input.value);
+        const expected = count < 10;
+        const actual = isRegistrationOpen(count, 10);
+        const prediction = this.querySelector<HTMLSelectElement>('select')!.value === 'true';
+        result.replaceChildren();
+        const comparison = document.createElement('p');
+        comparison.className = 'comparison';
+        comparison.textContent = `${labels.expected}: ${expected ? labels.open : labels.closed}. ${labels.actual}: ${actual ? labels.open : labels.closed}.`;
+        const explanation = document.createElement('p');
+        explanation.textContent = `${expected === actual ? labels.match : labels.mismatch} ${prediction === expected ? labels.correct : labels.incorrect}`;
+        result.append(comparison, explanation);
+        result.dataset.outcome = expected === actual ? 'match' : 'mismatch';
+      });
+    }
+  }
+  if (!customElements.get('seat-explorer')) customElements.define('seat-explorer', SeatExplorer);
+</script>

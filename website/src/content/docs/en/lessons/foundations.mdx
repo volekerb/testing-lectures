@@ -1,0 +1,151 @@
+---
+title: "01. What does a passing test prove?"
+description: Testing foundations through an event-registration rule, a boundary defect, and a practical investigation.
+---
+import CourseLink from '../../../../components/CourseLink.astro';
+import SeatExplorer from '../../../../components/SeatExplorer.astro';
+
+<p class="lesson-meta">45-minute lesson · 35-minute lab</p>
+<div class="lesson-actions"><CourseLink class="course-button" to="slides/en/foundations/">Open the slides ↗</CourseLink><CourseLink to="en/labs/registration/">Go to the practical lab →</CourseLink></div>
+
+A test passes. Can we release? Before answering, ask what we tested, what we expected, and why that expectation is trustworthy.
+
+In this lesson, an event has ten seats. A small function decides whether registration is open. The first two tests pass, yet a real boundary defect remains. You will turn that contradiction into a useful test and a precise statement about the fix.
+
+## What you will learn
+
+By the end, you can:
+
+- Derive an expected result from a stated requirement.
+- Choose values just below, at, and above a boundary.
+- Write a reproducible defect report and an automated regression test.
+- Explain what a passing function test does and does not establish.
+- Choose the next test using risk, rather than the number of available tools.
+
+You need basic knowledge of functions, conditions, and Boolean values. If JavaScript is new to you, read `true` as “open”, `false` as “closed”, and `===` as strict equality. You can do the reasoning exercise in the browser before installing anything.
+
+## A rule we can test
+
+Our event accepts registrations while there is at least one seat available. For this exercise, the agreed requirement is:
+
+<div class="callout-rule"><p><strong>Registration is open exactly when the current registered count is less than capacity.</strong></p></div>
+
+The function receives two safe integers: `registered >= 0` and `capacity >= 1`. It returns a Boolean. Invalid inputs throw `TypeError`. A count above capacity can occur in imported data; it must return `false`.
+
+This function only makes a decision. It does not add a participant, reserve a seat, or save anything. That boundary matters when we interpret the test result.
+
+Before looking at the code, predict the result for 9, 10, and 11 registered people at capacity 10. Explain each result using the rule.
+
+<SeatExplorer lang="en" />
+
+## Expected is different from observed
+
+The **expected result** follows from the requirement. The **actual result** comes from running the implementation. Comparing the implementation with itself would tell us little: we need an independent reason to expect an answer.
+
+That source of expected behavior is a **test oracle**. Here, it is the agreed rule plus a simple count of available seats. In other systems it could be a specification, an independent calculation, or a domain expert. An oracle can be incomplete or wrong; if the rule is ambiguous, clarify it before declaring the behavior a defect.
+
+| Already registered | Available seats | Expected registration |
+| --- | --- | --- |
+| 9 | 1 | Open (`true`) |
+| 10 | 0 | Closed (`false`) |
+| 11 | Already over capacity | Closed (`false`) |
+
+The values **9, 10, 11** surround the decision boundary. Choosing them is a small example of boundary-value analysis. It is more informative here than trying many unrelated numbers below ten.
+
+## Two green tests can miss a defect
+
+The starter implementation contains this return statement:
+
+```js
+return registered <= capacity;
+```
+
+For 9 people it returns `true`. For 11 it returns `false`. Both existing tests pass. At exactly 10, however, `<=` also returns `true`. The implementation disagrees with the rule at equality.
+
+A test suite is a selection of observations. Its green status does not automatically cover cases we never included. “Two tests passed” is accurate; “registration is correct” is a much larger claim.
+
+Testing is broader than executing code. Reviewing this rule, asking whether a waiting list exists, trying the interface, and investigating a mismatch are also testing activities. An automated assertion captures a repeatable check within that investigation.
+
+## Make the missing evidence executable
+
+A small test has a setup, an action, and an assertion. The example uses Node's built-in test runner and strict assertions:
+
+```js
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { isRegistrationOpen } from './registration.mjs';
+
+test('closes registration when the event is full', () => {
+  // Given: ten people are registered for ten seats.
+  const registered = 10;
+  const capacity = 10;
+
+  // When: we ask whether registration is open.
+  const actual = isRegistrationOpen(registered, capacity);
+
+  // Then: no seats remain, so registration must be closed.
+  assert.equal(actual, false);
+});
+```
+
+`assert.equal(actual, false)` fails if the function returns `true`. The test name states the behavior, rather than repeating the expression used in the implementation.
+
+Follow the sequence:
+
+1. **Observe the failure.** Add the equality test and run it against the starter. Confirm that it fails because the actual Boolean is wrong, not because an import or command is broken.
+2. **Fix the implementation.** Replace `<=` with `<`.
+3. **Run the checks again.** The equality test and existing examples should pass. Also check another capacity so the solution is not accidentally hard-coded to ten.
+4. **Keep the test.** It now guards against this specific boundary defect returning. That is a regression check.
+
+This exercise adds a test to existing faulty code. It is not a complete demonstration of test-driven development; we will explore that workflow separately.
+
+## Describe the defect so someone can reproduce it
+
+A useful report separates facts from possible consequences:
+
+> **Title:** Full event still allows registration.<br />
+> **Environment:** Node.js 24; record the repository revision or download date.<br />
+> **Input:** `isRegistrationOpen(10, 10)`.<br />
+> **Expected:** `false`, because the registered count equals capacity.<br />
+> **Actual:** `true`; attach the failing assertion output.<br />
+> **Possible impact:** A caller relying on this decision could offer a registration when no seat remains. Whether the complete system can oversell also depends on its reservation logic.
+
+“Registration is broken” leaves the reader to rediscover the problem. A minimal input, observed result, and explicit rule make the next action clear.
+
+## Choose the next test by risk
+
+Our function test isolates a business rule. It is quick and easy to interpret. A component or integration test might check a reservation service against a real database. An end-to-end test might register a participant through the browser. These scopes answer different questions; a larger scope is not automatically a better test.
+
+After this fix, useful untested questions include:
+
+- **Concurrent requests:** can two callers both see the last available seat before either reserves it?
+- **Interface feedback:** does the page explain that the event is full, including to a keyboard or screen-reader user?
+- **Data freshness:** does the decision use the current count, or a stale cached value?
+
+Prioritize a risk by plausible impact and likelihood, plus how cheaply a test can provide useful evidence. For a real ticket sale, protecting the last seat from concurrent reservation is a stronger next investigation than adding twenty more happy-path examples of this pure function.
+
+Testing also starts before implementation: clarify the rule during planning, review it during development, exercise it in CI, and observe real behavior after release. Production observations complement controlled tests; they do not replace them.
+
+## Your practical task
+
+[Open the lab: The last seat](../../labs/registration/). You will run the green starter tests, add the missing failing test, make the fix, and submit a short evidence-based conclusion.
+
+Allow 35 minutes: 5 to predict and run, 10 to capture the failure, 10 to fix and check, and 10 to report and discuss. Work in pairs if useful: one person proposes the expected result; the other challenges the assumption and reproduces the observation.
+
+## Check your understanding
+
+**1. All existing tests pass. What can you safely conclude?**
+
+<details><summary>Compare your answer</summary><p>The observations covered by those tests matched their assertions in that run. The suite may still omit a boundary, use a wrong oracle, or miss an interaction.</p></details>
+
+**2. Why is 10 more useful than another test with 7 here?**
+
+<details><summary>Compare your answer</summary><p>Equality is where <code>&lt;=</code> and <code>&lt;</code> disagree. Seven exercises the same below-capacity branch as nine.</p></details>
+
+**3. The fixed function passes every lab check. Can two users safely reserve the last seat?**
+
+<details><summary>Compare your answer</summary><p>We have not tested reservation or concurrency. Both callers could read the same count. We need evidence about the operation that reads and updates the reservation state, including its atomicity.</p></details>
+
+Finish with this sentence: **“We have evidence that ___, under ___. We have not yet checked ___; next I would ___ because ___.”**
+
+[Look up the bilingual terminology](../../glossary/) or [see where this lesson fits in the course](../../course/).

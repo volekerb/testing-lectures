@@ -1,0 +1,30 @@
+---
+import CourseLink from './CourseLink.astro';
+import SeatExplorer from './SeatExplorer.astro';
+const { lang = 'en' } = Astro.props;
+const ru = lang === 'ru';
+---
+<div class="course-home">
+  <section class="course-intro">
+    <div class="intro-copy">
+      <p class="course-kicker">{ru ? 'Открытый курс по тестированию ПО' : 'An open course in software testing'}</p>
+      <h1 id="_top" data-page-title>{ru ? 'Тест пройден. Что это доказывает?' : 'A passing test. What does it prove?'}</h1>
+      <p class="intro-lead">{ru ? 'Учитесь задавать точные вопросы, находить дефекты и понимать границы своих проверок. Начнём с одного лишнего участника.' : 'Learn to ask precise questions, find defects, and understand the limits of your evidence. Start with one person too many.'}</p>
+      <div class="intro-actions">
+        <CourseLink class="course-button" to={`${lang}/lessons/foundations/`}>{ru ? 'Начать урок' : 'Start the lesson'} <span aria-hidden="true">→</span></CourseLink>
+        <CourseLink class="text-link" to={`slides/${lang}/foundations/`}>{ru ? 'Открыть слайды' : 'Open the slides'} <span aria-hidden="true">↗</span></CourseLink>
+      </div>
+      <dl class="lesson-facts"><div><dt>{ru ? 'Первый урок' : 'First lesson'}</dt><dd>{ru ? 'Основы тестирования' : 'Testing foundations'}</dd></div><div><dt>{ru ? 'Формат' : 'Format'}</dt><dd>{ru ? '45 мин + 35 мин практики' : '45 min + 35 min lab'}</dd></div></dl>
+    </div>
+    <SeatExplorer lang={lang} />
+  </section>
+  <section class="learning-path">
+    <h2>{ru ? 'От догадки к проверяемому выводу' : 'From a guess to a defensible conclusion'}</h2>
+    <div class="path-rows">
+      <CourseLink to={`${lang}/lessons/foundations/`}><span class="path-number">01</span><div><h3>{ru ? 'Разберитесь в правиле' : 'Understand the rule'}</h3><p>{ru ? 'Требование, тестовый оракул и ожидаемый результат.' : 'A requirement, a test oracle, and an expected result.'}</p></div><span aria-hidden="true">→</span></CourseLink>
+      <CourseLink to={`${lang}/labs/registration/`}><span class="path-number">02</span><div><h3>{ru ? 'Поймайте дефект тестом' : 'Catch the defect with a test'}</h3><p>{ru ? 'Добавьте проверку границы, исправьте код и сохраните защиту от регрессии.' : 'Add a boundary test, fix the code, and keep the regression check.'}</p></div><span aria-hidden="true">→</span></CourseLink>
+      <CourseLink to={`${lang}/labs/solution/`}><span class="path-number">03</span><div><h3>{ru ? 'Объясните свои выводы' : 'Explain your evidence'}</h3><p>{ru ? 'Сравните решение и назовите риски, которые ещё не проверены.' : 'Compare your solution and name the risks you have not tested.'}</p></div><span aria-hidden="true">→</span></CourseLink>
+    </div>
+  </section>
+  <section class="course-note"><h2>{ru ? 'Два языка. Одна программа.' : 'Two languages. One course.'}</h2><p>{ru ? 'Для студентов с базовыми навыками программирования и начинающих QA-инженеров. Переключайте язык на любой странице: тема останется той же. Исходный код примеров одинаков для обеих версий.' : 'For students with basic programming skills and junior QA engineers. Switch languages on any page and stay on the same topic. Both versions use the same example code.'}</p><CourseLink to={`${lang}/course/`}>{ru ? 'Программа и материалы прошлых лет' : 'Explore the course map and archive'} →</CourseLink></section>
+</div>

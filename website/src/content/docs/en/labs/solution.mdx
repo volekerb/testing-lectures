@@ -1,0 +1,51 @@
+---
+title: "Walkthrough: evidence before confidence"
+description: Review the boundary test, the minimal fix, and a defensible conclusion about coverage.
+---
+
+Try the [lab](../registration/) before reading this walkthrough. There is more to a useful solution than changing one character.
+
+## The missing example
+
+For `(9, 10)` expect `true`; for `(10, 10)` and `(11, 10)` expect `false`. The agreed rule is the oracle. The original tests omit equality.
+
+Add this to `starter/registration.test.mjs`:
+
+```js
+test('closes registration when the event is full', () => {
+  assert.equal(isRegistrationOpen(10, 10), false);
+});
+```
+
+Before the fix, Node reports an assertion failure: actual `true`, expected `false`. That observation matters: it shows the new test can detect this defect. A test that never failed might be checking the wrong function or an irrelevant value.
+
+## The minimal fix
+
+Replace the return expression in `starter/registration.mjs`:
+
+```diff
+-return registered <= capacity;
++return registered < capacity;
+```
+
+Keep the input validation unchanged. Run your tests, then `node check.mjs`. Expect **6/6 checks passed**. The checker includes capacity 1 and 20 as well as 10, so a hard-coded threshold does not satisfy it.
+
+The reference implementation and tests are also in `labs/registration/solution/` in the repository. Run `npm run lab:solution` from the repository root to compare; the downloadable starter intentionally excludes that directory.
+
+## A conclusion supported by the evidence
+
+> The function now rejects registration when the count equals capacity, and still accepts the below-capacity examples. The new regression test fails on the original implementation and passes after the comparison change. We checked six valid-input examples. We have not established that the complete application prevents overselling under concurrent requests. Next, I would test atomic reservation of the last seat because two callers may observe the same available seat.
+
+Avoid “all bugs are fixed” or “100% tested”. The lab does not measure statement or branch coverage, and even complete code coverage would not establish correctness of every requirement or interaction.
+
+## Improve the test set thoughtfully
+
+Add an assertion that invalid input throws `TypeError`. Use a different capacity to challenge accidental constants. Do not add many numbers merely to increase the test count: explain which new failure each example could reveal.
+
+For a concurrent-reservation test, write a scenario rather than implementing infrastructure now: start with one remaining seat, issue two reservation attempts, and assert that exactly one succeeds and the final persisted count does not exceed capacity. That would exercise the reservation operation and state, not just this Boolean function.
+
+## Exit check
+
+Can you name the requirement, oracle, triggering input, observed mismatch, smallest fix, and remaining risk without reading the answer? If so, you have completed the pilot's core learning loop.
+
+[Return to the lesson](../../lessons/foundations/) or [explore the course map](../../course/).

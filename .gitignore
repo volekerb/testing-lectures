@@ -1,2 +1,13 @@
 .idea
 /lec_5_example/target
+
+# Bilingual course and slide builds
+node_modules/
+/dist/
+/website/.astro/
+/slides/.slidev/
+/test-results/
+/playwright-report/
+/lighthouse-results/
+/lighthouse.html
+.DS_Store
