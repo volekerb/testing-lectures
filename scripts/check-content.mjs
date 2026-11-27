@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import lecture from '../lecture-01.config.mjs';
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
@@ -26,8 +27,10 @@ for (const lang of ['en', 'ru']) {
 const decks = await Promise.all(['en', 'ru'].map(lang => readFile(new URL(`slides/foundations.${lang}.md`, root), 'utf8')));
 const ids = decks.map(deck => [...deck.matchAll(/^name: (.+)$/gm)].map(match => match[1]));
 assert.deepEqual(ids[0], ids[1], 'Slide IDs and order must match for language switching');
-assert.equal(ids[0].length, 20, 'The pilot must contain 20 slides per language');
-for (const deck of decks) assert.equal([...deck.matchAll(/<!--\n/g)].length, 20, 'Each slide needs speaker notes');
+assert.deepEqual(ids[0], lecture.slideIds, 'Decks must follow the reviewed lecture structure');
+assert.equal(new Set(ids[0]).size, ids[0].length, 'Slide IDs must be unique');
+assert.equal(ids[0][lecture.boundarySlide - 1], 'boundary');
+for (const deck of decks) assert.equal([...deck.matchAll(/<!--\n/g)].length, lecture.slideIds.length, 'Each slide needs speaker notes');
 const codeBlocks = deck => [...deck.matchAll(/```(?:js|diff)\n([\s\S]*?)```/g)].map(match => match[1]);
 assert.deepEqual(codeBlocks(decks[0]), codeBlocks(decks[1]), 'Executable examples should match across translations');
 console.log(`Content parity passed: ${en.length} page pairs, ${ids[0].length} aligned slides, shared code examples.`);

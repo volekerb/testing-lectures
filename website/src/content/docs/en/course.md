@@ -1,9 +1,9 @@
 ---
 title: Course map and archive
-description: The completed pilot, planned modules, and original course materials.
+description: The rebuilt first lecture, planned modules, and original course materials.
 ---
 
-**The first lesson is complete** in English and Russian: reading, slides, and lab. The other modules below are a plan; they will gain lesson links as they are released.
+**The first lesson is complete** in English and Russian: full reading, 48 slides per language, the original 20-case assignment, a source map and a supporting lab. The other modules below are a plan; they will gain lesson links as they are released.
 
 | Module | Status |
 | --- | --- |

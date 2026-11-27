@@ -1,151 +1,235 @@
 ---
-title: "01. What does a passing test prove?"
-description: Testing foundations through an event-registration rule, a boundary defect, and a practical investigation.
+title: "01. Testing foundations: from requirements to evidence"
+description: Roles, lifecycles, environments, test design, defects, reporting, and a practical assignment rebuilt from the original lecture and recording.
 ---
 import CourseLink from '../../../../components/CourseLink.astro';
 import SeatExplorer from '../../../../components/SeatExplorer.astro';
 
-<p class="lesson-meta">45-minute lesson · 35-minute lab</p>
-<div class="lesson-actions"><CourseLink class="course-button" to="slides/en/foundations/">Open the slides ↗</CourseLink><CourseLink to="en/labs/registration/">Go to the practical lab →</CourseLink></div>
+<p class="lesson-meta">Two 75-minute sessions · Separate 35-minute supporting lab</p>
+<div class="lesson-actions"><CourseLink class="course-button" to="slides/en/foundations/">Open the slides ↗</CourseLink><CourseLink to="en/labs/registration/">Supporting lab →</CourseLink></div>
 
-A test passes. Can we release? Before answering, ask what we tested, what we expected, and why that expectation is trustworthy.
+How do we turn “build a great application” into a reasoned decision about its quality? This lecture follows a product from business need to operation. Testing belongs throughout that journey.
 
-In this lesson, an event has ten seats. A small function decides whether registration is open. The first two tests pass, yet a real boundary defect remains. You will turn that contradiction into a useful test and a precise statement about the fix.
+This rebuild preserves the original first lecture's breadth. Its [56-page PDF and 2021 recording](../foundations-sources/) supply the sequence; worked examples and terminology clarifications expand it. The registration example was created for the pilot and remains a supporting lab, not the subject of the whole lecture.
 
-## What you will learn
+## Outcomes and route
 
-By the end, you can:
+You will explain who contributes to quality, locate testing in a delivery lifecycle, choose test scopes and techniques, prepare a small test plan, report a defect, and communicate remaining risk. Basic programming helps with the optional automation lab; the main assignment does not require a framework.
 
-- Derive an expected result from a stated requirement.
-- Choose values just below, at, and above a boundary.
-- Write a reproducible defect report and an automated regression test.
-- Explain what a passing function test does and does not establish.
-- Choose the next test using risk, rather than the number of available tools.
+Use session one for requirements, roles, lifecycle, environments and test scopes. Use session two for planning, design, execution, defects and reports. Timing is an estimate for a classroom trial. Pause at each discussion prompt instead of treating the reading as a script.
 
-You need basic knowledge of functions, conditions, and Boolean values. If JavaScript is new to you, read `true` as “open”, `false` as “closed”, and `===` as strict equality. You can do the reasoning exercise in the browser before installing anything.
+## Start with a business need
 
-## A rule we can test
+The original story begins with “I want a great app” and develops into selling goods globally on mobile devices. That still leaves unanswered questions: which customers, which goods, which markets, what budget and deadline, and what outcome counts as success?
 
-Our event accepts registrations while there is at least one seat available. For this exercise, the agreed requirement is:
+For our worked example, a small shop sells physical items. Clarify payment, inventory, delivery, cancellation, accessibility and failure behavior before selecting test tools. “Checkout works” is too vague to be an oracle.
 
-<div class="callout-rule"><p><strong>Registration is open exactly when the current registered count is less than capacity.</strong></p></div>
+**Example agreement, authored for this rebuild:** an order is confirmed only after payment is authorized and stock is reserved. A declined payment must not create a confirmed order. Retrying the same checkout request must not create a second order or charge. These are exercise assumptions, not universal rules for all shops.
 
-The function receives two safe integers: `registered >= 0` and `capacity >= 1`. It returns a Boolean. Invalid inputs throw `TypeError`. A count above capacity can occur in imported data; it must return `false`.
+**Discuss:** a payment times out, but the provider may have authorized it. What needs clarification before we can say what the customer should see?
 
-This function only makes a decision. It does not add a participant, reserve a seat, or save anything. That boundary matters when we interpret the test result.
+## Roles are contributions, not job titles
 
-Before looking at the code, predict the result for 9, 10, and 11 registered people at capacity 10. Explain each result using the rule.
+An analyst clarifies the business need and acceptance examples. An architect chooses component boundaries and tradeoffs. UX work considers the whole journey, including errors and recovery. Developers implement and review changes. Testers investigate behavior and risk. Deployment, operation and support keep the service usable and feed observations back into development.
+
+One person may perform several roles. Testing is not a final department that makes everybody else's work safe. Nor does shared ownership mean nobody owns a decision: name the people responsible for requirements, environments, release decisions and investigating failed checks.
+
+## What testing includes
+
+Testing evaluates work products and behavior to discover problems and provide information about quality. A finite set of checks cannot demonstrate the absence of every defect. Planning, analysis, design, preparation, execution and evaluation all contribute evidence.
+
+A requirement review is **static testing**: we inspect without executing the product. Submitting a checkout request is **dynamic testing**. A written specification is valuable but may omit user needs such as keyboard access, understandable errors or acceptable response times. Make those expectations explicit with relevant people.
+
+A **test oracle** is a source for deciding what should happen: an agreed rule, an independent calculation, a reliable reference or a domain expert. The expected result comes from that source; the actual result comes from observation. Copying the implementation into the expected result can repeat its mistake. An unclear oracle needs investigation before a confident defect claim.
+
+## Testing throughout the lifecycle
+
+| Work in progress | Useful testing question |
+| --- | --- |
+| Requirements | Are rules consistent, feasible and illustrated with examples? |
+| Architecture and UX | What happens when a dependency fails or a person cannot use the default interaction? |
+| Implementation | Do small rules and component interactions behave as intended? |
+| Delivery | Does the build install, migrate data and work in its target configuration? |
+| Operation | What are users experiencing, and can we detect and recover from failures? |
+
+Sequential or waterfall models organize major stages in sequence. They can make late feedback costly; the diagram does not prohibit early reviews. The V-model connects development work products with corresponding test activities. It is a planning aid, not a rule to postpone test design.
+
+**Iterative** work revisits and improves a solution; **incremental** work adds usable portions. A project can do both. A **spiral** model organizes cycles around risk analysis. **RAD** emphasizes rapid development and feedback, often through prototypes. These names describe different ideas, not interchangeable labels.
+
+**Agile** emphasizes collaboration, frequent delivery and adaptation. Scrum is one framework and uses sprints; Agile does not require every team to use Scrum or a two-week cycle. Short iterations still need coherent test data, review and meaningful acceptance criteria. See the [Agile principles](https://agilemanifesto.org/principles.html).
+
+## From a change to a release
+
+A possible pipeline is:
+
+1. Review the change and run static checks.
+2. Run fast unit and component checks.
+3. Exercise relevant API and integration behavior.
+4. Deploy a known build to a test environment.
+5. Combine targeted automation with exploratory, accessibility and other risk-based checks.
+6. Review evidence and remaining risk; deploy with observation and recovery arrangements.
+
+This is an example, not a universal stage order. Some checks run in parallel or on a schedule. Continuous integration keeps changes integrated and checked frequently. Continuous delivery keeps software releasable; continuous deployment automatically releases changes that satisfy the configured controls. A green pipeline reports the checks that ran, not all possible product qualities.
+
+Staged rollouts and canaries can limit exposure and reveal production differences. Monitor meaningful outcomes and decide who can stop or roll back a release. Production testing requires an explicitly controlled scope and suitable data; prefer synthetic or minimized data for ordinary test environments. Observation after release complements earlier testing.
+
+## Skills and responsibilities
+
+The original lecture includes requirements, UX, UI, backend, databases, mobile and desktop behavior; environment configuration; automation; reports; and improvements to the testing process. These remain part of the course horizon.
+
+Useful skills combine programming, test design, domain knowledge, debugging, data preparation, infrastructure literacy and communication. Specializations can focus on a platform, automation, exploratory work, performance, leadership or coordination. A title alone does not define the scope of responsibility. Choose an improvement because it produces useful evidence, not because its tool name is fashionable.
+
+## Environments, data and isolation
+
+Development, test and production environments serve different purposes. Teams may also need preview environments, staging or several parallel test environments. Record the build revision, configuration, dependency versions, feature flags, database schema and relevant test data. A name such as “staging” does not prove production equivalence.
+
+**Example:** two parallel tests edit the same customer record. One expects the original address; the other changes it. The resulting failure may be an interference problem rather than a checkout defect. Give tests independent records or an explicit reset strategy, and clean up what they create. Fixed sleeps do not establish readiness.
+
+Environment ownership is shared engineering work: agree who provisions, diagnoses and restores it. Infrastructure as code and repeatable setup can help. A local container does not automatically reproduce production scale, networking or configuration.
+
+## Classify by independent questions
+
+Avoid using one label to answer every question about a test.
+
+| Axis | Examples |
+| --- | --- |
+| Scope | Unit, component, integration, system, acceptance |
+| Quality concern | Functional behavior, performance, accessibility, security, reliability |
+| Knowledge used | Black-box specification; white-box internal structure |
+| Execution | Static review; dynamic execution; human investigation; automated check |
+| Input or situation | Positive and negative cases |
+| Purpose or timing | Smoke, confirmation, regression; alpha/beta feedback in a release context |
+
+A negative case checks rejection or recovery. It **passes** when the system rejects invalid input correctly. Black-box does not mean manual, and white-box does not mean unit-only. Acceptance checks evaluate agreed needs; system checks address the behavior of the defined system. Local terminology may vary, so state boundaries and intent.
+
+### Integration and end-to-end: the closing question
+
+The recording ends with a question about integration versus end-to-end testing without a frontend. Consider `client → order API → payment adapter → database`.
+
+A unit check might exercise a price calculation without external services. An integration check might use the real order repository and a real test database. A broader journey might create an order through the API, handle the payment callback and verify the stored result. It can be end-to-end for the **declared backend boundary** even without a browser.
+
+If payment is simulated, say so: it does not establish compatibility with the live provider. A browser journey adds UI interactions but still may substitute external services. Describe the entry point, exit observation, real collaborators and test doubles. [Integration-test terminology varies](https://martinfowler.com/bliki/IntegrationTest.html); the evidence boundary is more useful than arguing over the name.
+
+### Quality attributes need measurable questions
+
+“Fast” is incomplete. For a performance exercise, agree on a workload, dataset, environment, duration, error limit and response-time target. For example, a proposed target of p95 below 800 ms at 50 requests/second needs stakeholder agreement; it is not a measured property of our shop. The 95th percentile is the value at or below which 95% of the observed response times fall.
+
+Accessibility includes keyboard operation and understandable feedback; an automated scan alone is insufficient. Security needs threats, authorization boundaries and appropriate test scope. Use the [WCAG overview](https://www.w3.org/WAI/standards-guidelines/wcag/) and [OWASP testing guide](https://owasp.org/projects/web-security-testing-guide) as further references, not a promise that one lesson covers either discipline.
+
+## Plan the investigation
+
+A test plan answers what, why, how, who and when. Include scope and exclusions, risks, approach, data and environments, responsibilities, schedule, artifacts, entry/exit criteria, and conditions for stopping and resuming. The PDF's IEEE 829 example is a historical formal template. The goal here is a useful agreement, not copying a large document.
+
+**Worked lean plan:** investigate checkout for one market and one currency on build X. Prioritize duplicate charges and lost orders above cosmetic spacing. Use rule checks, API/database integration and a small number of browser journeys. Exclude real-money transactions and other markets, recording those limits. Use isolated synthetic customers and the payment sandbox. The developer investigates service failures; QA coordinates scenarios; the product owner resolves acceptance questions and owns the release decision with the team.
+
+Start when the build, environment and agreed rules are available. Stop if the payment sandbox or test data is unreliable; record blocked cases instead of marking them passed. Resume after recovery and a smoke check. A proposed exit condition is that critical agreed scenarios have usable evidence, severe unresolved defects are reviewed, and remaining risks are explicitly accepted. A deadline does not turn unknown behavior into a pass.
+
+Risk combines the likelihood of an adverse outcome with its impact. Scores help discussion but do not create certainty. Revisit priorities when evidence changes.
+
+## Design a test case
+
+A case records an ID and purpose, requirement or oracle, preconditions, inputs, steps, expected results and cleanup/postconditions. Include enough detail for the intended reader to reproduce it.
+
+**SHOP-03, declined payment:** given a synthetic customer, one available item and a sandbox payment method configured to decline, submit checkout once. Expect a clear decline response and no confirmed order. Inspect the agreed order state and stock behavior; whether stock is temporarily reserved must be specified. Remove the created test records. Do not infer “no charge” solely from the page text: choose an observation at the relevant boundary.
+
+## Choose examples deliberately
+
+### Equivalence partitioning
+
+Suppose an item quantity accepts whole numbers from 1 through 5. Partition inputs into valid integers, integers below 1, integers above 5, and invalid types or formats. Representative values might be 3, 0, 6 and `"abc"`. Type coercion and fractional inputs need an explicit contract. Members of a partition are treated as similar for this purpose; that is a test-design assumption, not proof that every member behaves identically.
+
+### Boundary-value analysis
+
+For that quantity rule, useful values include 0, 1, 2 and 4, 5, 6. Boundaries supplement partitions. The supporting registration lab isolates one boundary: registration is open exactly when `registered < capacity`.
+
+Both arguments are safe integers; `registered >= 0`, `capacity >= 1`. Invalid inputs throw `TypeError`; an already-over-capacity count returns `false`. The function makes a decision; it does not reserve or persist a seat. Predict 9, 10 and 11 for capacity 10 before checking:
 
 <SeatExplorer lang="en" />
 
-## Expected is different from observed
+### Cause and effect: a decision table
 
-The **expected result** follows from the requirement. The **actual result** comes from running the implementation. Comparing the implementation with itself would tell us little: we need an independent reason to expect an answer.
+For the exercise rule “confirm only if payment is authorized AND stock is reserved”, enumerate the combinations:
 
-That source of expected behavior is a **test oracle**. Here, it is the agreed rule plus a simple count of available seats. In other systems it could be a specification, an independent calculation, or a domain expert. An oracle can be incomplete or wrong; if the rule is ambiguous, clarify it before declaring the behavior a defect.
-
-| Already registered | Available seats | Expected registration |
+| Authorized | Reserved | Confirm order? |
 | --- | --- | --- |
-| 9 | 1 | Open (`true`) |
-| 10 | 0 | Closed (`false`) |
-| 11 | Already over capacity | Closed (`false`) |
+| No | No | No |
+| No | Yes | No |
+| Yes | No | No |
+| Yes | Yes | Yes |
 
-The values **9, 10, 11** surround the decision boundary. Choosing them is a small example of boundary-value analysis. It is more informative here than trying many unrelated numbers below ten.
+The table makes missing outcomes visible. Compensation, timeouts and retries require further rules; a Boolean table does not model the full asynchronous workflow.
 
-## Two green tests can miss a defect
+### Pairwise, exhaustive and experience-based selection
 
-The starter implementation contains this return statement:
+Three browser engines × two locales × two payment methods produces 12 combinations. Exhaustive execution covers all 12 combinations of **those selected factors**, not every possible application state. Six carefully chosen rows can cover every pair of factor values: Chromium/EN/card, Chromium/RU/wallet, Firefox/EN/wallet, Firefox/RU/card, WebKit/EN/card, WebKit/RU/wallet. Three-way interactions may still be missed. Constraints can change which rows are valid.
 
-```js
-return registered <= capacity;
-```
+Error guessing uses experience, such as checking duplicate submissions after a timeout. Exploratory testing combines learning, design and execution with a purpose: “For 15 minutes, investigate recovery after a checkout timeout; record actions, observations, questions and risks.” It is not random clicking. Preserve evidence so someone can continue the investigation.
 
-For 9 people it returns `true`. For 11 it returns `false`. Both existing tests pass. At exactly 10, however, `<=` also returns `true`. The implementation disagrees with the rule at equality.
+## Cases, checklists and suites
 
-A test suite is a selection of observations. Its green status does not automatically cover cases we never included. “Two tests passed” is accurate; “registration is correct” is a much larger claim.
+A detailed case helps with reproducibility, handover or a subtle setup. A checklist is appropriate when a knowledgeable tester can supply the detail: empty cart, decline, retry, keyboard path, error recovery. An exploratory charter states the mission and timebox. Choose the artifact to suit the task.
 
-Testing is broader than executing code. Reviewing this rule, asking whether a waiting list exists, trying the interface, and investigating a mismatch are also testing activities. An automated assertion captures a repeatable check within that investigation.
+Group checks by purpose and cost. A smoke suite asks whether critical behavior is usable enough to continue. Regression checks look for unintended changes. Performance suites need their own workload and measurements. Tagging by component, risk, environment and runtime helps select work without losing traceability.
+
+For a large suite, investigate flaky results: uncontrolled state, timing, shared data, unstable dependencies or genuine intermittent defects. Reruns can aid diagnosis but do not erase the first failure. If a check is quarantined, record its owner, reason, risk and a deadline for repair. Parallel execution needs isolation, not just more machines.
+
+## Describe the defect so someone can reproduce it
+
+A defect report needs a short specific title, environment and revision, preconditions, steps or minimal input, expected and actual results, evidence and impact. Distinguish an observed failure from a suspected cause.
+
+**Example:** “Full event reports registration open.” On the recorded Node version and source revision, call `isRegistrationOpen(10, 10)`. Expected `false` from the capacity rule; actual `true`. Attach the assertion output. A caller could offer an unavailable seat; an actual production oversell has not been demonstrated.
+
+**Severity** describes impact; **priority** describes when to address the issue in context. A serious defect in a disabled feature and a prominent typo before a campaign may have different scheduling considerations. Do not equate priority with an intrinsic property of the code.
+
+A typical workflow is report → triage → fix → confirmation → closure or reopening. Names vary by team. Confirmation checks the specific fix; regression checks other behavior that the change may affect.
 
 ## Make the missing evidence executable
 
-A small test has a setup, an action, and an assertion. The example uses Node's built-in test runner and strict assertions:
+This optional worked test prepares you for the supporting lab. The starter passes checks at 9 and 11, but uses `<=` and mishandles equality. Add:
 
 ```js
-import test from 'node:test';
-import assert from 'node:assert/strict';
-import { isRegistrationOpen } from './registration.mjs';
-
 test('closes registration when the event is full', () => {
-  // Given: ten people are registered for ten seats.
-  const registered = 10;
-  const capacity = 10;
-
-  // When: we ask whether registration is open.
-  const actual = isRegistrationOpen(registered, capacity);
-
-  // Then: no seats remain, so registration must be closed.
+  const actual = isRegistrationOpen(10, 10);
   assert.equal(actual, false);
 });
 ```
 
-`assert.equal(actual, false)` fails if the function returns `true`. The test name states the behavior, rather than repeating the expression used in the implementation.
+The starter already imports `test` from `node:test`, `assert` from `node:assert/strict`, and the function. First observe the expected `false` versus actual `true` assertion failure. Then change `<=` to `<`, rerun all checks and retain the new test. An import error is not the intended failure. See the [lab instructions](../../labs/registration/) for commands and the ten-point rubric.
 
-Follow the sequence:
+A passing function test does not show that two concurrent requests cannot reserve the same last seat. That needs a test of the state-changing operation and its persistence boundary.
 
-1. **Observe the failure.** Add the equality test and run it against the starter. Confirm that it fails because the actual Boolean is wrong, not because an import or command is broken.
-2. **Fix the implementation.** Replace `<=` with `<`.
-3. **Run the checks again.** The equality test and existing examples should pass. Also check another capacity so the solution is not accidentally hard-coded to ten.
-4. **Keep the test.** It now guards against this specific boundary defect returning. That is a regression check.
+## Report evidence and remaining risk
 
-This exercise adds a test to existing faulty code. It is not a complete demonstration of test-driven development; we will explore that workflow separately.
+Reports support decisions for different readers. An engineer needs reproduction details and logs; a release owner needs coverage of important risks, unresolved defects and constraints. Include build, environment, time, scope and definitions of statuses.
 
-## Describe the defect so someone can reproduce it
+**Illustrative report, not a real course run:** of 20 planned cases, 14 passed, 2 failed, 3 were blocked by the payment sandbox and 1 was not run. That is 14/16 among executed cases and 14/20 of all planned cases. Neither percentage tells us whether the most important risks are covered. Name the failures, blockers and next action; do not count blocked work as a pass. Mark stale results and explain how flaky attempts are counted.
 
-A useful report separates facts from possible consequences:
+A consistently passing test can be valuable protection. Review assertions, risk relevance, redundancy, runtime and diagnostic usefulness before removing it. Deliberately introducing a representative fault, or mutation testing where appropriate, can reveal weak assertions. Counting tests or celebrating a high pass rate is not a substitute for judgment.
 
-> **Title:** Full event still allows registration.<br />
-> **Environment:** Node.js 24; record the repository revision or download date.<br />
-> **Input:** `isRegistrationOpen(10, 10)`.<br />
-> **Expected:** `false`, because the registered count equals capacity.<br />
-> **Actual:** `true`; attach the failing assertion output.<br />
-> **Possible impact:** A caller relying on this decision could offer a registration when no seat remains. Whether the complete system can oversell also depends on its reservation logic.
+## Tools and practical challenges
 
-“Registration is broken” leaves the reader to rediscover the problem. A minimal input, observed result, and explicit rule make the next action clear.
+Choose a tool for a job: issues for defect tracking, a case repository for traceability, reports for evidence, diagrams or prototypes for shared understanding, data generators for repeatable inputs, browser tools for UI investigation, and load tools for performance. The archive shows products available then; those screenshots are not a current purchasing recommendation.
 
-## Choose the next test by risk
+Browser engines and devices differ. [Playwright supports Chromium, Firefox and WebKit](https://playwright.dev/docs/browsers), but those engines do not cover every physical device or assistive technology. Prioritize a platform matrix using actual user and product needs.
 
-Our function test isolates a business rule. It is quick and easy to interpret. A component or integration test might check a reservation service against a real database. An end-to-end test might register a participant through the browser. These scopes answer different questions; a larger scope is not automatically a better test.
+Production-like datasets need meaningful shape and relationships, not copied personal information. Resilience investigations can include a controlled dependency failure in an authorized test environment, with an expected recovery behavior, observation and stop condition. This introduces the recording's fault-injection discussion; it is not a request to disrupt a public service.
 
-After this fix, useful untested questions include:
+## Homework: 20 cases for one application
 
-- **Concurrent requests:** can two callers both see the last available seat before either reserves it?
-- **Interface feedback:** does the page explain that the event is full, including to a keyboard or screen-reader user?
-- **Data freshness:** does the decision use the current count, or a stale cached value?
+The original PDF asks for 20 cases for a website. Preserve that assignment: choose an application you own, a local demo, or a site where the proposed non-disruptive testing is permitted. Designing cases does not require executing unsafe actions on a third-party service.
 
-Prioritize a risk by plausible impact and likelihood, plus how cheaply a test can provide useful evidence. For a real ticket sale, protecting the last seat from concurrent reservation is a stronger next investigation than adding twenty more happy-path examples of this pure function.
+Submit:
 
-Testing also starts before implementation: clarify the rule during planning, review it during development, exercise it in CI, and observe real behavior after release. Production observations complement controlled tests; they do not replace them.
+1. A short product goal, declared boundary and assumptions; a lean test plan with three prioritized risks.
+2. **20 distinct cases** using the case structure above. Include positive and negative scenarios, boundaries, at least one interaction and one quality attribute. Do not inflate the count with identical cases using arbitrary values.
+3. A map from cases to requirements/risks and the techniques used; explain one deliberate exclusion.
+4. Execute a safe smoke subset where feasible and report actual outcomes. If you only designed cases, label them **not run**. Report a reproducible defect only if observed; otherwise record an open question or risk.
+5. A brief release recommendation with limitations and the next most useful investigation.
 
-## Your practical task
+Assessment: scope and oracle clarity (2), meaningful case selection (3), reproducible case detail (2), honest evidence/reporting (2), and justified priorities (1). Total 10. The separate [registration lab](../../labs/registration/) has its own rubric and does not replace these 20 cases.
 
-[Open the lab: The last seat](../../labs/registration/). You will run the green starter tests, add the missing failing test, make the fix, and submit a short evidence-based conclusion.
+## Where the course goes next
 
-Allow 35 minutes: 5 to predict and run, 10 to capture the failure, 10 to fix and check, and 10 to report and discuss. Work in pairs if useful: one person proposes the expected result; the other challenges the assumption and reproduces the observation.
+The original course proposes one evolving application across UI, backend and eventually mobile contexts. We will build on that idea with static checks, unit/component/integration tests, API and browser journeys, reports, visual and contract checks, performance and CI. These later modules remain [planned](../../course/); LLM-system evaluation is a later extension.
 
-## Check your understanding
-
-**1. All existing tests pass. What can you safely conclude?**
-
-<details><summary>Compare your answer</summary><p>The observations covered by those tests matched their assertions in that run. The suite may still omit a boundary, use a wrong oracle, or miss an interaction.</p></details>
-
-**2. Why is 10 more useful than another test with 7 here?**
-
-<details><summary>Compare your answer</summary><p>Equality is where <code>&lt;=</code> and <code>&lt;</code> disagree. Seven exercises the same below-capacity branch as nine.</p></details>
-
-**3. The fixed function passes every lab check. Can two users safely reserve the last seat?**
-
-<details><summary>Compare your answer</summary><p>We have not tested reservation or concurrency. Both callers could read the same count. We need evidence about the operation that reads and updates the reservation state, including its atomicity.</p></details>
-
-Finish with this sentence: **“We have evidence that ___, under ___. We have not yet checked ___; next I would ___ because ___.”**
-
-[Look up the bilingual terminology](../../glossary/) or [see where this lesson fits in the course](../../course/).
+Before leaving, explain: which requirement is unclear, which boundary your test covers, how a negative case can pass, what distinguishes confirmation from regression, and what you would report when the environment prevents execution. A useful answer names both the evidence and its limits.

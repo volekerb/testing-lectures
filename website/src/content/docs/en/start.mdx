@@ -1,40 +1,34 @@
 ---
 title: Start here
-description: Choose a learning path, set up the lab, and navigate the bilingual course.
+description: Follow the full first lecture, prepare the main assignment, and try the supporting lab.
 ---
 import CourseLink from '../../../components/CourseLink.astro';
 
-This pilot includes one complete lesson: **testing foundations**, with reading, animated slides, and a practical lab. The [course map](../course/) identifies the later modules as planned and links the original lectures.
+The rebuilt first lecture includes **48 animated slides per language**, a full reading, a source map and an assignment. It follows the original PDF and recording from requirements through reporting. The [course map](../course/) marks later modules as planned.
 
 ## Choose your route
 
-**Students with basic programming:** read the lesson, predict the boundary results, then write and run the lab test. Focus on connecting an assertion to a requirement.
+**Programming students:** connect product goals to testable rules, then design cases at several scopes. The supporting lab turns one boundary into an executable regression check.
 
-**Junior QA engineers:** begin with the same rule and bug report. If automation is new, work through the provided JavaScript test line by line; you do not need React, Java, or a test framework installation.
+**Junior QA engineers:** use familiar reporting and case design as a starting point; practice explaining environments, boundaries and evidence. If automation is new, trace the provided JavaScript assertion before editing it.
 
-Both routes have the same outcomes and assessment. Experienced learners can also investigate concurrent requests as a discussion exercise.
+Both routes share the full lecture and 20-case assignment. The registration lab supports the course and has a separate rubric.
 
 ## What you need
 
-Reading, slides, and the interactive example work in a modern browser. The local lab requires [Node.js 24](https://nodejs.org/en/download). Check your installation:
-
-```sh
-node --version
-```
-
-The lab uses the built-in test runner. No `npm install` is necessary for the downloaded lab. Building this website is a separate maintainer task described in the repository README.
+Reading, slides and the interactive example work in a modern browser. The supporting lab needs [Node.js 24](https://nodejs.org/en/download), a terminal and an editor. Check `node --version`. The downloaded lab needs no `npm install`; website development is a separate maintainer task in the README.
 
 ## Use the course
 
-- Start with the [foundations lesson](../lessons/foundations/).
-- Open the slides from its top toolbar. Right arrow or Space advances through reveals; Left arrow goes back. The slide footer returns to the reading or switches language at the same slide.
-- Use the header language selector to keep the current topic in English or Russian.
-- Search is available in the built website, including this preview. Results follow the selected language.
-- Use the theme selector for light or dark appearance. Motion follows your system's reduced-motion preference.
-- The reading contains the complete argument without animation. Use the browser's Print command for a static handout.
+- Start with the [foundations reading](../lessons/foundations/); the [source map](../lessons/foundations-sources/) links PDF topics to recording timestamps.
+- Right arrow or Space reveals slide content; Left arrow goes back. The footer returns to the reading or switches language at the same slide.
+- The website language selector keeps the topic. Search results follow the selected language.
+- Light/dark appearance and reduced-motion preferences are supported. The reading is the complete static alternative and can be printed from the browser.
 
-## Your first session
+## Plan your sessions
 
-Allow **80 minutes**: 45 for guided discussion and examples, followed by 35 for the lab. For self-study, pause at every prediction before opening the answer. Finish with the exit questions and your explanation of what remains untested.
+Allow **two 75-minute sessions**, with a break after slide 24. Session one covers the product, lifecycle, environments and scopes; session two covers planning, design, defects and reports. This is an estimate awaiting classroom feedback.
+
+Prepare the main **20-case assignment** afterwards. Add the separate **35-minute registration lab** to practice the failure/fix loop. Do not count designed but unexecuted cases as passed. The website does not collect submissions.
 
 <CourseLink class="course-button" to="en/lessons/foundations/">Start the lesson →</CourseLink>
