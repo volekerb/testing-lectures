@@ -10,6 +10,15 @@ examples remain in their existing directories.
 
 [Русская инструкция](README.ru.md) · [2021 archive](lectures_v_2021/README.MD) · [2020 archive](lectures_v_2020/README.md)
 
+## Browse the course
+
+| | English | Русский |
+| --- | --- | --- |
+| Course website | [Start learning](https://volekerb.github.io/testing-lectures/en/) | [Начать обучение](https://volekerb.github.io/testing-lectures/ru/) |
+| First lecture | [Reading](https://volekerb.github.io/testing-lectures/en/lessons/foundations/) | [Текст урока](https://volekerb.github.io/testing-lectures/ru/lessons/foundations/) |
+| Animated slides | [Present](https://volekerb.github.io/testing-lectures/slides/en/foundations/) | [Открыть](https://volekerb.github.io/testing-lectures/slides/ru/foundations/) |
+| Practical lab | [The last seat](https://volekerb.github.io/testing-lectures/en/labs/registration/) | [Последнее место](https://volekerb.github.io/testing-lectures/ru/labs/registration/) |
+
 ## Preview the complete course
 
 Use Node.js 24 (`nvm use` if you use nvm).

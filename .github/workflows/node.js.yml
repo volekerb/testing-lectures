@@ -6,10 +6,11 @@ name: Node.js CI
 on:
   push:
     branches: [ master ]
-    paths: ['app_example/frontend/**', '.github/workflows/node.js.yml']
+    paths: ['app_example/frontend/**']
   pull_request:
     branches: [ master ]
-    paths: ['app_example/frontend/**', '.github/workflows/node.js.yml']
+    paths: ['app_example/frontend/**']
+  workflow_dispatch:
 
 jobs:
   build:

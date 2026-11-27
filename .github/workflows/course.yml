@@ -16,6 +16,7 @@ on:
 
 permissions:
   contents: read
+  pages: read
 
 concurrency:
   group: course-${{ github.workflow }}-${{ github.ref }}
@@ -33,6 +34,10 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      - name: Read current Pages configuration
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api repos/${{ github.repository }}/pages --jq '{html_url,build_type,source}'
       - run: npm test
       - run: npm run lab:test
       - run: npm run lab:solution

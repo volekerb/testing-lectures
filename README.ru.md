@@ -2,6 +2,11 @@
 
 [English](README.md)
 
+[Сайт курса](https://volekerb.github.io/testing-lectures/ru/) ·
+[Первый урок](https://volekerb.github.io/testing-lectures/ru/lessons/foundations/) ·
+[Анимированные слайды](https://volekerb.github.io/testing-lectures/slides/ru/foundations/) ·
+[Практика](https://volekerb.github.io/testing-lectures/ru/labs/registration/)
+
 Двуязычный курс для студентов с базовыми навыками программирования и начинающих
 QA-инженеров, которые переходят к автоматизации. В пилоте готов первый урок:
 текст на двух языках, по 20 анимированных слайдов, интерактивный пример и практика

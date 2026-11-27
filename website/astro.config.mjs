@@ -1,12 +1,14 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import { base } from '../course.config.mjs';
+import focusableTables from './plugins/focusable-tables.mjs';
 
 export default defineConfig({
   site: 'https://volekerb.github.io',
   base,
   outDir: '../dist',
   trailingSlash: 'always',
+  markdown: { rehypePlugins: [focusableTables] },
   integrations: [starlight({
     title: { en: 'Testing, in practice', ru: 'Тестирование на практике' },
     description: 'A practical bilingual course in software testing.',

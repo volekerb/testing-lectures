@@ -28,7 +28,7 @@ for (const lang of ['en', 'ru']) {
     await page.getByRole('link', { name: ru ? 'Начать урок' : 'Start the lesson' }).click();
     await expect(page).toHaveURL(new RegExp(`/${lang}/lessons/foundations/`));
     const other = ru ? 'en' : 'ru';
-    await page.locator('starlight-lang-select select').selectOption({ label: ru ? 'English' : 'Русский' });
+    await page.getByRole('banner').locator('starlight-lang-select select').selectOption({ label: ru ? 'English' : 'Русский' });
     await expect(page).toHaveURL(new RegExp(`/${other}/lessons/foundations/`));
     await expect(page.locator('html')).toHaveAttribute('lang', other);
     expect(errors).toEqual([]);
@@ -50,7 +50,7 @@ for (const lang of ['en', 'ru']) {
 
   test(`${lang}: search finds the current language's lesson`, async ({ page }) => {
     await page.goto(`${lang}/`);
-    await page.locator('site-search button').click();
+    await page.getByRole('button', { name: ru ? 'Поиск' : 'Search', exact: true }).click();
     const search = page.locator('input[type="search"]');
     await search.fill(ru ? 'оракул' : 'oracle');
     const results = page.locator('.pagefind-ui__result-link');
