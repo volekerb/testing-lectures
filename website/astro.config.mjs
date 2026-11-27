@@ -21,6 +21,7 @@ export default defineConfig({
     sidebar: [
       { slug: 'start', label: 'Start here', translations: { ru: 'Как учиться' } },
       { slug: 'lessons/foundations', label: '01. Testing foundations', translations: { ru: '01. Основы тестирования' } },
+      { slug: 'lessons/foundations-sources', label: 'Lecture sources', translations: { ru: 'Источники лекции' } },
       { slug: 'labs/registration', label: 'Lab: the last seat', translations: { ru: 'Практика: последнее место' } },
       { slug: 'labs/solution', label: 'Lab walkthrough', translations: { ru: 'Разбор практики' } },
       { slug: 'glossary', label: 'Glossary', translations: { ru: 'Словарь' } },

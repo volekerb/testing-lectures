@@ -6,6 +6,7 @@ import { join, dirname } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { unzipSync } from 'fflate';
 import { base } from '../../course.config.mjs';
+import lecture from '../../lecture-01.config.mjs';
 
 for (const lang of ['en', 'ru']) {
   const ru = lang === 'ru';
@@ -51,6 +52,15 @@ for (const lang of ['en', 'ru']) {
     await expect(page).toHaveURL(new RegExp(`/${ru ? 'en' : 'ru'}/$`));
   });
 
+  test(`${lang}: full lecture retains the main assignment and links its sources`, async ({ page }) => {
+    await page.goto(`${lang}/lessons/foundations/`);
+    await expect(page.getByRole('heading', { name: ru ? 'Домашнее задание: 20 кейсов для приложения' : 'Homework: 20 cases for one application', exact: true })).toBeVisible();
+    await page.goto(`${lang}/lessons/foundations-sources/`);
+    await expect(page.locator('main a[href*="t=8494s"]')).toBeVisible();
+    await page.getByRole('banner').locator('starlight-lang-select select').selectOption({ label: ru ? 'English' : 'Русский' });
+    await expect(page).toHaveURL(new RegExp(`/${ru ? 'en' : 'ru'}/lessons/foundations-sources/`));
+  });
+
   test(`${lang}: search finds the current language's lesson`, async ({ page }) => {
     await page.goto(`${lang}/`);
     await page.getByRole('button', { name: ru ? 'Поиск' : 'Search', exact: true }).click();
@@ -64,14 +74,14 @@ for (const lang of ['en', 'ru']) {
   });
 
   test(`${lang}: slides reveal states, preserve slide on language switch, and reload deeply`, async ({ page }) => {
-    await page.goto(`slides/${lang}/foundations/#/3`);
+    await page.goto(`slides/${lang}/foundations/#/${lecture.boundarySlide}`);
     await expect(page.locator('.diagram-caption strong')).toContainText('9');
     await page.keyboard.press('ArrowRight');
     await expect(page.locator('.diagram-caption strong')).toContainText('10');
     await page.keyboard.press('ArrowRight');
     await expect(page.locator('.diagram-caption strong')).toContainText('11');
     await page.locator('.course-slide-footer').getByRole('link', { name: ru ? 'English' : 'Русский' }).click();
-    await expect(page).toHaveURL(new RegExp(`/slides/${ru ? 'en' : 'ru'}/foundations/#/3`));
+    await expect(page).toHaveURL(new RegExp(`/slides/${ru ? 'en' : 'ru'}/foundations/#/${lecture.boundarySlide}`));
     await page.reload();
     await expect(page.locator('.capacity-diagram')).toBeVisible();
     await page.locator('.course-slide-footer').getByRole('link', { name: ru ? 'Lesson reading' : 'Текст урока' }).click();
@@ -79,7 +89,8 @@ for (const lang of ['en', 'ru']) {
   });
 
   test(`${lang}: every slide has a rendered heading and fits above the footer`, async ({ page }) => {
-    for (let slide = 1; slide <= 20; slide++) {
+    test.setTimeout(120000);
+    for (let slide = 1; slide <= lecture.slideIds.length; slide++) {
       await page.goto(`slides/${lang}/foundations/#/${slide}?clicks=99`);
       const active = page.locator(`[data-slidev-no="${slide}"].slidev-page-active .slidev-layout`);
       await expect(active.locator('h1')).toBeVisible();

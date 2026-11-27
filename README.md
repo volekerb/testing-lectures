@@ -3,8 +3,9 @@
 A bilingual software-testing course for university students with basic programming
 and junior QA engineers moving into automation.
 
-**Pilot:** one complete lesson in English and Russian, 20 animated slides per language,
-an interactive boundary example, and a 35-minute practical lab. Later course modules
+**Lecture 1 rebuilt from its PDF and recording:** full English and Russian readings,
+48 animated slides per language, the original 20-case assignment, and a separate
+35-minute registration lab. Allow two 75-minute teaching sessions (estimate). Later course modules
 are explicitly marked as planned. Original lecture PDFs, videos, and application
 examples remain in their existing directories.
 
@@ -123,7 +124,7 @@ built deck includes them.
 
 ## Publishing
 
-`course.yml` builds and tests the pilot on pull requests and saves a reviewable
+`course.yml` builds and tests the course on pull requests and saves a reviewable
 `bilingual-course` artifact. After a tested change reaches `master`, it publishes
 that artifact to the existing `gh-pages` branch and explicitly requests and verifies
 the GitHub Pages build. A manual run on `master` with `deploy` selected can republish.
@@ -139,10 +140,14 @@ student accounts are required.
 
 ## Sources and future work
 
-The pilot reworks the original first lecture's lifecycle and application-wide testing
-themes into a focused evidence/boundary exercise. See the bilingual course map for
-the remaining 11 modules and later LLM-testing extension. No LLM module is presented
-as complete in this pilot.
+The first lecture preserves the original scope: requirements, roles, lifecycle,
+environments, classification, planning, design, execution, defects, reports and the
+shared application roadmap. The registration example is newly authored supporting
+practice. See the [source map](instructor/lecture-01-source-map.md) for PDF pages,
+recording timestamps, expansions and corrections, and the [facilitator guide](instructor/foundations.en.md)
+for pacing and assessment. The full automatic transcript and all 56 rendered PDF pages
+were reviewed, with two recording frames checked; this was not continuous audiovisual
+viewing. Later modules and the LLM extension remain planned.
 
 Framework references: [Starlight i18n](https://starlight.astro.build/guides/i18n/),
 [Slidev animations](https://sli.dev/guide/animations),

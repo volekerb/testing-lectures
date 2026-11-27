@@ -1,55 +1,91 @@
 # Facilitator guide: testing foundations
 
-[Русский](foundations.ru.md)
+[Русский](foundations.ru.md) · [Source review and coverage](lecture-01-source-map.md)
 
-Audience: programming students and junior QA engineers. Prerequisites: functions,
-conditions, Boolean values. Core outcomes are the same for both audiences; spend
-extra time tracing the JavaScript assertion for learners new to automation.
+Audience: programming students and junior QA engineers. The full first lecture now
+preserves the source course's breadth. The registration exercise is supporting
+practice. Main outcomes: explain lifecycle and ownership, choose test boundaries,
+plan by risk, design cases, investigate defects and report honest evidence.
 
-## Run the session
+## Two teaching sessions
 
-The 20-slide lesson has about 42 minutes of prompts plus 3 minutes of discussion or
-transition buffer. Follow it with the 35-minute lab (80 minutes total).
+Estimated pacing, not yet classroom-validated. Use the prompts and localized speaker
+notes in all 48 slides. Take a break after slide 24; the two sessions may be held on
+separate days. Main homework preparation is additional to these 150 minutes.
 
-| Slides | Activity | Facilitation cue |
-| --- | --- | --- |
-| 1-2 | Elicit assumptions; introduce outcomes | Record what “green tests” means to learners |
-| 3-6 | Predict 9/10/11; define the oracle | Pause before each seat-count reveal |
-| 7-11 | Find the mismatch; write and fix a test | Show the right assertion failure before editing code |
-| 12-16 | Report, scope, concurrency, risk, lifecycle | Separate observed facts from possible impact |
-| 17-20 | Explain the lab; exit questions | Return to the opening assumptions |
+| Session | Slides | Minutes | Activity |
+| --- | --- | --- | --- |
+| 1 | 1-4 | 8 | Diagnostic, questions, oracle and testing scope |
+| 1 | 5-8 | 12 | Business story, requirements and roles |
+| 1 | 9-15 | 20 | Lifecycle models, pipeline and operational feedback |
+| 1 | 16-19 | 15 | Responsibilities, skills, environments and state collision |
+| 1 | 20-24 | 20 | Independent classification axes; backend E2E question |
+| 2 | 25-27 | 12 | Risk, lean planning and a reproducible case |
+| 2 | 28-33 | 20 | Worked design techniques and artifact choice |
+| 2 | 34-38 | 15 | Suites, flakiness, defect reports and fix verification |
+| 2 | 39-43 | 13 | Reporting, test value, tools, platforms and resilience |
+| 2 | 44-48 | 15 | Roadmap, assignments, exit discussion and sources |
 
-Speaker notes in both decks contain prompts and suggested timings. Right arrow/Space
-reveals; Left arrow reverses. The language footer preserves the slide number but
-starts its reveals again, useful when restating an idea. The lesson reading is the
-static alternative. Do not rely on animation to communicate a unique fact.
+For every reveal, ask for a prediction or explanation before advancing. The
+lifecycle, pipeline, boundary, test scope and defect workflow animate at the pace
+of the discussion. Right arrow/Space reveals; Left arrow reverses. Language
+switching preserves slide number and restarts reveals. Reduced motion preserves
+content without transitions. The reading contains the complete static explanation.
 
-## Lab timing and evaluation
+## Main assignment: retain the original 20 cases
 
-5 minutes predict/run, 10 capture failure, 10 fix/check, 10 report/discuss. The starter
-suite deliberately passes; the contract checker deliberately fails equality until
-the student fixes it. Do not “repair” this teaching fixture in the course source.
+The original PDF page 37 asks for 20 cases for a website. Require a defined product
+boundary, a lean plan with three prioritized risks, 20 distinct cases, mappings to
+rules and techniques, honest execution status and a bounded release recommendation.
+Include positive/negative scenarios, boundaries, an interaction and a quality
+attribute. The reading is the complete assignment specification.
 
-Each of five rubric criteria is worth 2 points: correct predictions and oracle;
-meaningful failing test; minimal fix and passing checks; reproducible report; two
-untested risks and a justified next check. Accept equivalent test names and code.
-The reasoning must show why the expected value is false, not merely copy the answer.
+Grade out of 10: scope/oracle 2; meaningful selection 3; reproducibility 2; honest
+evidence/reporting 2; justified priority 1. Do not reward repeated arbitrary values
+as distinct ideas. Accept either language. Designed-only cases must be marked not
+run; do not require students to fabricate a bug. Use owned, local or permitted
+applications. A safe executable smoke subset is useful when feasible.
 
-Ask stronger learners to propose an atomic-reservation test. Keep databases and
-concurrency implementation out of this first lab. Do not grade English fluency;
-accept the report in either course language.
+Discussion keys: correct rejection means a negative case passes; an API journey
+can be E2E for a declared backend boundary; a simulated payment provider limits the
+claim; confirmation checks the specific fix while regression checks affected
+behavior; blocked and not-run are not passes. The 14/16 and 14/20 example has different
+denominators, and neither percentage establishes risk coverage.
 
-## Pilot acceptance checklist
+## Supporting registration lab: 35 minutes
 
-- Same learning outcomes, contract, test inputs, and rubric in both languages.
-- Home → lesson → slides → lab → walkthrough works with the deployment base path.
-- Language switching preserves the topic, and the slide switch preserves its number.
-- All 20 slides are readable at projection size; staged content stays within the slide.
-- Keyboard, mobile reading, light/dark appearance, and reduced motion are reviewed.
-- ZIP extraction works offline after Node is installed; no `npm install` is needed.
-- New boundary test fails on the starter and passes after the minimal change.
-- Existing archives remain accessible; planned lessons are not represented as published.
+Use 5 minutes to predict/run, 10 to capture failure, 10 to fix/check, 10 to report.
+The starter suite deliberately passes; the contract checker deliberately fails two
+equality examples. Do not repair the teaching fixture in the published source.
 
-For the first classroom trial, record where learners hesitate, actual lab completion
-time, misconceptions about green tests, and translation wording that needs revision.
-Use those observations before migrating the next lecture or adding LLM material.
+The lab's separate 10-point rubric has five two-point criteria: predictions/oracle;
+meaningful failure; minimal fix/passing checks; reproducible report; two untested
+risks with a justified next check. Stronger learners can propose an atomic
+reservation test; implementation of database concurrency is outside this lab.
+This supporting exercise does not replace the main assignment.
+
+## Sources and corrections
+
+The source map documents the review method, all PDF pages and video timestamps.
+The full automatic transcript and rendered PDF were reviewed, plus two video frames;
+there was no continuous audiovisual viewing. Captions may misrecognize tool names.
+
+Preserve roles versus titles, requirements beyond written specifications,
+environment ownership, test isolation, reporting and the closing integration/E2E
+question. Clarify Agile versus Scrum, iterative versus incremental versus spiral,
+negative-case outcomes, current browser-engine diversity, and why always-green
+tests cannot be removed based on pass frequency alone. Do not repeat dated job
+market promises or present historical tools as current recommendations.
+
+## Acceptance and classroom feedback
+
+- Same outcomes, assignment, examples, slide IDs and assessment in both languages.
+- Home, reading, source map, slides, lab, walkthrough and archive links work.
+- All 48 slides fit at projection size after every reveal; EN/RU switching is aligned.
+- Keyboard, mobile reading, light/dark themes and reduced motion remain usable.
+- Downloaded lab works without dependencies and supports the failure/fix loop.
+- Later modules and the LLM extension are clearly planned.
+
+Record actual pacing, where learners hesitate, whether the 20 cases show deliberate
+selection, scope misconceptions, and translation issues. Adjust after the first
+classroom trial before calling the timing validated.

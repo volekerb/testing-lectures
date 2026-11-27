@@ -63,3 +63,19 @@
   .slidev-vclick-hidden { transform: none; }
 }
 @media print { .course-slide-footer { display: none; } }
+
+/* Full lecture: keep diagrams readable at projection size in both languages. */
+.slidev-layout.lecture h1 { font-size: 40px; margin-bottom: 26px; }
+.slidev-layout.lecture { font-size: 24px; }
+.slidev-layout.lecture li { margin-bottom: 18px; }
+.lecture-flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 34px 0; }
+.lecture-flow > div { border-top: 4px solid #176859; background: #e8eee5; padding: 18px 14px; font-size: 25px; font-weight: 500; }
+.lecture-flow small { display: block; font-size: 18px; line-height: 1.35; font-weight: 400; color: #54645b; margin-top: 14px; }
+.lecture .scope-stack strong { font-size: 23px; white-space: nowrap; }
+.lecture .scope-stack span { font-size: 21px; }
+.lecture table { font-size: 23px; }
+.lecture td, .lecture th { padding: 9px 16px; }
+.report-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 30px 0; }
+.report-grid > div { border-bottom: 2px solid #a7b9ab; padding: 12px; }
+.report-grid strong { display: block; font-size: 56px; font-variant-numeric: tabular-nums; }
+.report-grid span { font-size: 20px; }
