@@ -2,10 +2,10 @@
 
 [English](README.md)
 
-[Сайт курса](https://volekerb.github.io/testing-lectures/ru/) ·
-[Первый урок](https://volekerb.github.io/testing-lectures/ru/lessons/foundations/) ·
-[Анимированные слайды](https://volekerb.github.io/testing-lectures/slides/ru/foundations/) ·
-[Практика](https://volekerb.github.io/testing-lectures/ru/labs/registration/)
+[Сайт курса](https://brekelov.com/testing-lectures/ru/) ·
+[Первый урок](https://brekelov.com/testing-lectures/ru/lessons/foundations/) ·
+[Анимированные слайды](https://brekelov.com/testing-lectures/slides/ru/foundations/) ·
+[Практика](https://brekelov.com/testing-lectures/ru/labs/registration/)
 
 Двуязычный курс для студентов с базовыми навыками программирования и начинающих
 QA-инженеров, которые переходят к автоматизации. В пилоте готов первый урок:
@@ -79,9 +79,12 @@ npm run test:e2e
 ## Публикация
 
 Workflow `course.yml` собирает и проверяет сайт, сохраняя артефакт `bilingual-course`.
-Публикация запускается только вручную на `master`, с выбранным параметром `deploy`.
-Перед первым выпуском в Settings → Pages выберите источник **GitHub Actions**.
-Старый workflow примера интерфейса больше не перезаписывает сайт курса.
+После попадания проверенного изменения в `master` он публикует этот артефакт в
+существующую ветку `gh-pages`, запрашивает сборку Pages и проверяет её завершение.
+Для повторной публикации можно вручную запустить workflow на `master` с параметром
+`deploy`. Сохраняются текущий источник Pages (`gh-pages`, корень) и адрес
+`https://brekelov.com/testing-lectures/`. Старый пример интерфейса больше не
+перезаписывает сайт курса. Менять настройки Pages или создавать новый хостинг не нужно.
 
 Базовый путь: `/testing-lectures/`. Для отдельного домена задайте `COURSE_BASE=/`
 при сборке и браузерных тестах, обновите `site` в `website/astro.config.mjs`.

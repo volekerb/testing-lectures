@@ -5,7 +5,7 @@ on:
     branches: [master]
     paths: ['website/**', 'slides/**', 'labs/registration/**', 'scripts/**', 'tests/**', 'package*.json', '*.config.mjs', '.nvmrc', '.github/workflows/course.yml']
   push:
-    branches: [master, 'codex/bilingual-pilot']
+    branches: [master]
     paths: ['website/**', 'slides/**', 'labs/registration/**', 'scripts/**', 'tests/**', 'package*.json', '*.config.mjs', '.nvmrc', '.github/workflows/course.yml']
   workflow_dispatch:
     inputs:
@@ -66,23 +66,56 @@ jobs:
           name: bilingual-course
           path: dist/
           include-hidden-files: true
-      - name: Package Pages site
-        if: github.event_name == 'workflow_dispatch' && inputs.deploy && github.ref == 'refs/heads/master'
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist/
 
   deploy:
-    if: github.event_name == 'workflow_dispatch' && inputs.deploy && github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.deploy))
     needs: verify
     runs-on: ubuntu-latest
     permissions:
+      contents: write
       pages: write
-      id-token: write
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://brekelov.com/testing-lectures/
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
-      - name: Deploy tested course
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: bilingual-course
+          path: dist
+      - name: Verify existing Pages destination
+        id: pages
+        run: |
+          gh api repos/${{ github.repository }}/pages > /tmp/course-pages.json
+          jq -e '.build_type == "legacy" and .source.branch == "gh-pages" and .source.path == "/"' /tmp/course-pages.json
+          echo "cname=$(jq -r '.cname // empty' /tmp/course-pages.json)" >> "$GITHUB_OUTPUT"
+      - name: Publish tested static files
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: dist
+          cname: ${{ steps.pages.outputs.cname }}
+          force_orphan: false
+      - name: Request and verify the Pages build
+        run: |
+          expected_commit=$(gh api repos/${{ github.repository }}/git/ref/heads/gh-pages --jq .object.sha)
+          gh api --method POST repos/${{ github.repository }}/pages/builds --jq .status
+          for attempt in $(seq 1 60); do
+            gh api repos/${{ github.repository }}/pages/builds/latest > /tmp/course-pages-build.json
+            build_commit=$(jq -r .commit /tmp/course-pages-build.json)
+            build_status=$(jq -r .status /tmp/course-pages-build.json)
+            if [ "$build_commit" = "$expected_commit" ] && [ "$build_status" = "built" ]; then
+              echo "Published tested commit $expected_commit"
+              exit 0
+            fi
+            if [ "$build_commit" = "$expected_commit" ] && [ "$build_status" = "errored" ]; then
+              jq .error /tmp/course-pages-build.json
+              exit 1
+            fi
+            sleep 5
+          done
+          echo "Pages did not finish publishing the expected commit in time"
+          exit 1

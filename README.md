@@ -14,10 +14,10 @@ examples remain in their existing directories.
 
 | | English | Русский |
 | --- | --- | --- |
-| Course website | [Start learning](https://volekerb.github.io/testing-lectures/en/) | [Начать обучение](https://volekerb.github.io/testing-lectures/ru/) |
-| First lecture | [Reading](https://volekerb.github.io/testing-lectures/en/lessons/foundations/) | [Текст урока](https://volekerb.github.io/testing-lectures/ru/lessons/foundations/) |
-| Animated slides | [Present](https://volekerb.github.io/testing-lectures/slides/en/foundations/) | [Открыть](https://volekerb.github.io/testing-lectures/slides/ru/foundations/) |
-| Practical lab | [The last seat](https://volekerb.github.io/testing-lectures/en/labs/registration/) | [Последнее место](https://volekerb.github.io/testing-lectures/ru/labs/registration/) |
+| Course website | [Start learning](https://brekelov.com/testing-lectures/en/) | [Начать обучение](https://brekelov.com/testing-lectures/ru/) |
+| First lecture | [Reading](https://brekelov.com/testing-lectures/en/lessons/foundations/) | [Текст урока](https://brekelov.com/testing-lectures/ru/lessons/foundations/) |
+| Animated slides | [Present](https://brekelov.com/testing-lectures/slides/en/foundations/) | [Открыть](https://brekelov.com/testing-lectures/slides/ru/foundations/) |
+| Practical lab | [The last seat](https://brekelov.com/testing-lectures/en/labs/registration/) | [Последнее место](https://brekelov.com/testing-lectures/ru/labs/registration/) |
 
 ## Preview the complete course
 
@@ -97,7 +97,7 @@ automated accessibility checks, and the downloaded lab's complete failure/fix lo
 The build checks locale/slide parity and local links/assets. Automated accessibility
 checks supplement manual keyboard and visual review.
 
-For a Lighthouse check, start the preview and run:
+For a repeatable mobile Lighthouse audit, run `npm run audit`. For an HTML report, start the preview and run:
 
 ```sh
 npx lighthouse http://127.0.0.1:4321/testing-lectures/en/ --only-categories=performance,accessibility,best-practices,seo --output=html --output-path=./lighthouse.html
@@ -124,10 +124,12 @@ built deck includes them.
 ## Publishing
 
 `course.yml` builds and tests the pilot on pull requests and saves a reviewable
-`bilingual-course` artifact. It publishes **only** when manually run on `master` with
-`deploy` selected. In repository Settings → Pages, choose **GitHub Actions** as the
-source before the first publication. The archived frontend workflow no longer deploys
-to Pages, preventing it from overwriting the course.
+`bilingual-course` artifact. After a tested change reaches `master`, it publishes
+that artifact to the existing `gh-pages` branch and explicitly requests and verifies
+the GitHub Pages build. A manual run on `master` with `deploy` selected can republish.
+The repository retains its existing Pages source (`gh-pages`, root) and address,
+`https://brekelov.com/testing-lectures/`. The archived frontend workflow no longer
+publishes over the course. No Pages settings change or new hosting account is needed.
 
 The default base path is `/testing-lectures/`. For a custom domain, set `COURSE_BASE=/`
 for both the build and browser tests, and update `site` in `website/astro.config.mjs`.

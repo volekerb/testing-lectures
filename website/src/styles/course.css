@@ -50,6 +50,11 @@ button, input, select { font: inherit; }
 button, a, input, select { touch-action: manipulation; }
 :focus-visible { outline: 3px solid var(--course-accent); outline-offset: 4px; }
 .course-home { color: var(--course-ink); }
+.course-home a { color: var(--course-accent); }
+.mobile-language { display: none; }
+@media (max-width: 49.99rem) {
+  .mobile-language { display: inline-block; font-size: .95rem; padding: .35rem 0; text-underline-offset: .2em; }
+}
 [data-has-hero] .content-panel { border: 0; }
 [data-has-hero] .sl-container { max-width: 78rem; }
 .course-intro { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 5.5rem); align-items: start; padding: 2rem 0 4rem; }

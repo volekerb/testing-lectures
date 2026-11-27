@@ -46,12 +46,15 @@ for (const lang of ['en', 'ru']) {
     expect(await page.locator('.seat').first().evaluate(el => parseFloat(getComputedStyle(el).transitionDuration))).toBeLessThan(.01);
     const result = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
     expect(result.violations).toEqual([]);
+    await page.goto(`${lang}/`);
+    await page.getByRole('link', { name: ru ? 'English' : 'Русский', exact: true }).click();
+    await expect(page).toHaveURL(new RegExp(`/${ru ? 'en' : 'ru'}/$`));
   });
 
   test(`${lang}: search finds the current language's lesson`, async ({ page }) => {
     await page.goto(`${lang}/`);
     await page.getByRole('button', { name: ru ? 'Поиск' : 'Search', exact: true }).click();
-    const search = page.locator('input[type="search"]');
+    const search = page.getByRole('textbox', { name: ru ? 'Поиск' : 'Search', exact: true });
     await search.fill(ru ? 'оракул' : 'oracle');
     const results = page.locator('.pagefind-ui__result-link');
     await expect(results.first()).toBeVisible();

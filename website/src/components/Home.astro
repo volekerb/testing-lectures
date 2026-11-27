@@ -8,6 +8,7 @@ const ru = lang === 'ru';
   <section class="course-intro">
     <div class="intro-copy">
       <p class="course-kicker">{ru ? 'Открытый курс по тестированию ПО' : 'An open course in software testing'}</p>
+      <CourseLink class="mobile-language" to={ru ? 'en/' : 'ru/'}>{ru ? 'English' : 'Русский'}</CourseLink>
       <h1 id="_top" data-page-title>{ru ? 'Тест пройден. Что это доказывает?' : 'A passing test. What does it prove?'}</h1>
       <p class="intro-lead">{ru ? 'Учитесь задавать точные вопросы, находить дефекты и понимать границы своих проверок. Начнём с одного лишнего участника.' : 'Learn to ask precise questions, find defects, and understand the limits of your evidence. Start with one person too many.'}</p>
       <div class="intro-actions">

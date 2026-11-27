@@ -4,7 +4,7 @@ import { base } from '../course.config.mjs';
 import focusableTables from './plugins/focusable-tables.mjs';
 
 export default defineConfig({
-  site: 'https://volekerb.github.io',
+  site: 'https://brekelov.com',
   base,
   outDir: '../dist',
   trailingSlash: 'always',
